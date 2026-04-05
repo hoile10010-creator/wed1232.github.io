@@ -6,7 +6,6 @@
     <title>Bộ sách tham khảo ôn thi tốt nghiệp THPT và Đại Học</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ========== GIỮ NGUYÊN TOÀN BỘ CSS CŨ (ĐÃ CÓ Ở PHIÊN BẢN TRƯỚC) ========== */
         * {
             margin: 0;
             padding: 0;
@@ -872,7 +871,6 @@
             margin-bottom: 5px;
         }
 
-        /* ========== THÊM CSS CHO GIỎ HÀNG & KẾT QUẢ TÌM KIẾM ========== */
         .cart-modal .modal-content {
             max-width: 800px;
         }
@@ -1083,7 +1081,6 @@
         </aside>
 
         <main class="main-content">
-            <!-- Tất cả nội dung cũ (các bộ sách) vẫn giữ nguyên, chỉ bọc trong 1 div để dễ ẩn/hiện -->
             <div id="originalContent">
                 <!-- Toán -->
                 <div class="book-series-section" id="series-math">
@@ -1575,8 +1572,7 @@
                     <p>Hãy thử tìm kiếm với từ khóa khác.</p>
                 </div>
             </div>
-
-            <!-- Trang kết quả tìm kiếm riêng -->
+            
             <div id="searchResultsPage" class="search-results-page">
                 <div class="search-header">
                     <h2><i class="fas fa-search"></i> Kết quả tìm kiếm</h2>
@@ -1593,7 +1589,6 @@
         </main>
     </div>
 
-    <!-- Các modal (giữ nguyên) -->
     <div class="modal" id="authModal">
         <div class="modal-content">
             <span class="modal-close" id="modalClose">&times;</span>
@@ -1640,7 +1635,6 @@
     </footer>
 
     <script>
-        // ========== DATABASE SÁCH (GIỮ NGUYÊN) ==========
         const booksDatabase = {
             1: { title: "[2025-2026] Nền Tảng Toán Học", author: "Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Trợ Giảng Phạm Nhật Huy", category: "Toán học", price: 159000, stock: 500, pages: 384, icon: "fa-calculator", img: "NTT.jpg", description: "Được biên soạn nhằm giúp học sinh củng cố kiến thức nền tảng trước khi bước vào giai đoạn tổng ôn, luyện đề thi Tốt nghiệp THPT và các kỳ thi ĐGNL.", features: ["hơn 2000 bài tập điển hình", "Đầy đủ các dạng thức toán thường gặp khi đi thi", "CỦNG CỐ NỀN TẢNG TOÁN HỌC"] },
             2: { title: "[2025-2026] 60 Đề Minh Họa Môn Toán Tốt Nghiệp THPT 2026", author: "Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Thầy Bùi Quyết Tiến, Hà Quang Hưng", category: "Toán học", price: 159000, stock: 500, pages: 350, icon: "fa-chart-line", img: "TN60.jpg", description: "60 đề thi thử chất lượng cao, bám sát cấu trúc đề thi mới nhất...", features: ["60 đề thi thử", "Đáp án chi tiết", "Phân tích mức độ"] },
@@ -1658,8 +1652,6 @@
             14: { title: "[2025-2026] 60 Đề Minh Họa Môn Tiếng Anh TNPT 2026", author: "Cô Trang Anh", category: "Tiếng Anh", price: 159000, stock: 500, pages: 450, icon: "fa-book-open", img: "60TA.jpg", description: "BỘ ĐỀ TỦ SÂU", features: ["Phân tích chi tiết ma trận kiến thức, cấu trúc đề thi chính thức và đề tham khảo kỳ thi Tốt nghiệp THPT 2025 của Bộ GD&ĐT.", "Hướng dẫn cách làm từng dạng câu hỏi cụ thể, giúp học sinh nắm được cách xử lý thông tin và phương pháp suy luận với từng dạng bài.", "Tặng TÀI LIỆU PDF phân tích cấu trúc đề thi trong khóa học đi kèm."] },
             15: { title: "Tự học Từ vựng Tiếng Anh - Word Formation", author: "Bùi Thị Thanh Huyền", category: "Tiếng Anh", price: 119000, stock: 500, pages: 480, icon: "fa-edit", img: "TVTA.jpg", description: "Cuốn sách TỰ HỌC TỪ VỰNG TIẾNG ANH - WORD FORMATION cung cấp một phương pháp học tập hệ thống và khoa học dựa trên các thành phần cấu tạo từ, giúp người học", features: ["Nhiều hình ảnh minh họa", "Bài tập và bài kiểm tra", "Mindmap"] }
         };
-
-        // ========== GIỎ HÀNG (GIỮ NGUYÊN) ==========
         let cart = JSON.parse(localStorage.getItem('bookstore_cart')) || [];
         function saveCart() { localStorage.setItem('bookstore_cart', JSON.stringify(cart)); updateCartUI(); }
         function addToCart(bookId) {
@@ -1712,8 +1704,7 @@
             document.getElementById('checkoutModal').classList.add('active');
         }
         function showToast(msg) { let t = document.querySelector('.toast-notification'); if(t) t.remove(); t = document.createElement('div'); t.className = 'toast-notification'; t.innerHTML = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2500); }
-
-        // ========== HIỂN THỊ CHI TIẾT SÁCH ==========
+        
         function showBookDetail(bookId) {
             const book = booksDatabase[bookId];
             if (!book) return;
@@ -1723,8 +1714,6 @@
             container.innerHTML = `<div class="book-detail"><div class="book-detail-header"><div class="book-detail-image"><img src="${book.img}" alt="${book.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas ${book.icon}\' style=\'font-size:6rem; color:white;\'></i>'"></div><div class="book-detail-info"><h2>${book.title}</h2><div class="book-detail-meta"><p><i class="fas fa-user-edit"></i> <strong>Tác giả:</strong> ${book.author}</p><p><i class="fas fa-tag"></i> <strong>Thể loại:</strong> ${book.category}</p><p><i class="fas fa-file-alt"></i> <strong>Số trang:</strong> ${book.pages} trang</p></div><div class="book-detail-price">${book.price.toLocaleString('vi-VN')}đ</div><div class="book-detail-stock ${stockClass}"><i class="fas ${book.stock > 0 ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${stockText}</div><div><button class="btn-buy" onclick="addToCart(${bookId})"><i class="fas fa-bolt"></i> Mua ngay</button><button class="btn-add-cart" onclick="addToCart(${bookId})"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button></div></div></div><div class="book-detail-section"><h3><i class="fas fa-info-circle"></i> Giới thiệu sách</h3><div class="book-detail-description">${book.description}</div></div><div class="book-detail-section"><h3><i class="fas fa-star"></i> Điểm nổi bật</h3><ul class="book-features-list">${book.features.map(f => `<li>${f}</li>`).join('')}</ul></div></div>`;
             document.getElementById('bookDetailModal').classList.add('active');
         }
-
-        // ========== ĐĂNG NHẬP, ĐĂNG KÝ (GIỮ NGUYÊN) ==========
         let users = JSON.parse(localStorage.getItem('bookstore_users')) || [
             { id: 1, name: "chung", email: "admin@wed.com", password: "123456", role: "admin" },
             { id: 2, name: "chung1", email: "user@wed.com", password: "123456", role: "customer" }
@@ -1766,8 +1755,6 @@
             document.getElementById('authModal').classList.add('active');
         }
         function closeAuthModal() { document.getElementById('authModal').classList.remove('active'); }
-
-        // ========== TÌM KIẾM THÔNG MINH + TRANG RIÊNG ==========
         function removeAccent(str) {
             return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
         }
@@ -1800,8 +1787,6 @@
             const resultsGrid = document.getElementById('searchResultsGrid');
             const searchStats = document.getElementById('searchStats');
             const noResultsDiv = document.getElementById('searchNoResults');
-
-            // Ẩn nội dung gốc, hiện trang kết quả
             originalContent.style.display = 'none';
             searchPage.classList.add('active');
 
@@ -1831,8 +1816,6 @@
                          </div>`;
             });
             resultsGrid.innerHTML = html;
-
-            // Gắn lại sự kiện cho các nút trong kết quả tìm kiếm
             document.querySelectorAll('#searchResultsGrid .btn-detail').forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     const card = btn.closest('.book-card');
@@ -1863,10 +1846,7 @@
             document.getElementById('searchResultsPage').classList.remove('active');
             document.getElementById('searchInput').value = '';
         }
-
-        // ========== KHỞI TẠO ==========
         document.addEventListener('DOMContentLoaded', function() {
-            // Các sự kiện cho nút chi tiết và thêm giỏ trong nội dung gốc
             document.querySelectorAll('#originalContent .btn-detail').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
@@ -1883,8 +1863,6 @@
                     if (bookId) addToCart(parseInt(bookId));
                 });
             });
-
-            // Tìm kiếm
             const searchBtn = document.getElementById('searchButton');
             const searchInput = document.getElementById('searchInput');
             function performSearch() {
@@ -1897,11 +1875,7 @@
             }
             searchBtn.addEventListener('click', performSearch);
             searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
-
-            // Nút quay lại
             document.getElementById('backToHomeBtn').addEventListener('click', resetToOriginalContent);
-
-            // Các sự kiện modal, user, giỏ hàng
             document.getElementById('bookModalClose').addEventListener('click', () => document.getElementById('bookDetailModal').classList.remove('active'));
             document.getElementById('cartModalClose').addEventListener('click', () => document.getElementById('cartModal').classList.remove('active'));
             document.getElementById('checkoutModalClose').addEventListener('click', () => document.getElementById('checkoutModal').classList.remove('active'));
@@ -1926,7 +1900,6 @@
 
             updateUserUI();
             updateCartUI();
-            // Ẩn trang kết quả tìm kiếm ban đầu
             document.getElementById('searchResultsPage').classList.remove('active');
             document.getElementById('originalContent').style.display = 'block';
         });
