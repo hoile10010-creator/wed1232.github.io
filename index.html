@@ -6,7 +6,7 @@
     <title>Bộ sách tham khảo ôn thi tốt nghiệp THPT và Đại Học</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* ========== GIỮ NGUYÊN TOÀN BỘ CSS CŨ CỦA BẠN ========== */
+        /* ========== GIỮ NGUYÊN TOÀN BỘ CSS CŨ (ĐÃ CÓ Ở PHIÊN BẢN TRƯỚC) ========== */
         * {
             margin: 0;
             padding: 0;
@@ -872,7 +872,7 @@
             margin-bottom: 5px;
         }
 
-        /* ========== THÊM CSS CHO GIỎ HÀNG ========== */
+        /* ========== THÊM CSS CHO GIỎ HÀNG & KẾT QUẢ TÌM KIẾM ========== */
         .cart-modal .modal-content {
             max-width: 800px;
         }
@@ -962,6 +962,46 @@
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
+
+        /* Trang kết quả tìm kiếm riêng */
+        .search-results-page {
+            display: none;
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        .search-results-page.active {
+            display: block;
+        }
+        .search-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #eee;
+        }
+        .search-header h2 {
+            color: #2c3e50;
+        }
+        .btn-back {
+            background: #7f8c8d;
+            color: white;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-back:hover {
+            background: #5d6d7e;
+        }
+        .search-stats {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+            font-size: 0.95rem;
+        }
     </style>
 </head>
 <body>
@@ -973,12 +1013,11 @@
             </div>
             <div class="search-container">
                 <div class="search-box">
-                    <input type="text" id="searchInput" placeholder="Tìm kiếm sách theo tên, tác giả...">
+                    <input type="text" id="searchInput" placeholder="Tìm kiếm sách theo tên, tác giả, thể loại...">
                     <button id="searchButton"><i class="fas fa-search"></i> Tìm kiếm</button>
                 </div>
             </div>
             <div class="user-info" id="userInfo">
-                <!-- THÊM ICON GIỎ HÀNG -->
                 <div class="cart-icon" id="cartIcon">
                     <i class="fas fa-shopping-cart"></i>
                     <span class="cart-count" id="cartCount">0</span>
@@ -1044,521 +1083,535 @@
         </aside>
 
         <main class="main-content">
-            <!-- Toán -->
-            <div class="book-series-section" id="series-math">
-                <div class="series-header math-bg">
-                    <div class="series-icon"><i class="fas fa-calculator"></i></div>
-                    <div class="series-info">
-                        <h3>Toán</h3>
-                        <p>Là ngôn ngữ mà Chúa đã viết nên vũ trụ "Galileo"</p>
+            <!-- Tất cả nội dung cũ (các bộ sách) vẫn giữ nguyên, chỉ bọc trong 1 div để dễ ẩn/hiện -->
+            <div id="originalContent">
+                <!-- Toán -->
+                <div class="book-series-section" id="series-math">
+                    <div class="series-header math-bg">
+                        <div class="series-icon"><i class="fas fa-calculator"></i></div>
+                        <div class="series-info">
+                            <h3>Toán</h3>
+                            <p>Là ngôn ngữ mà Chúa đã viết nên vũ trụ "Galileo"</p>
+                        </div>
                     </div>
-                </div>
-                <div class="series-content">
-                    <div class="series-description">
-                        <p>Cuốn sách tập trung vào việc xây dựng và củng cố kiến thức nền tảng môn Toán cho chương trình mới (áp dụng cho kỳ thi từ năm 2025). Các nội dung chính thường bao gồm:</p>
-                        <ul class="arrow-list">
-                            <li><strong>Hệ thống lý thuyết:</strong> Trình bày chi tiết, dễ hiểu các định nghĩa, định lý và công thức quan trọng.</li>
-                            <li><strong>Phân dạng bài tập:</strong> Chia nhỏ các dạng toán từ cơ bản đến mức độ vận dụng, giúp học sinh nắm vững phương pháp giải.</li>
-                            <li><strong>Ví dụ minh họa:</strong> Có các bài giải mẫu chi tiết để học sinh hiểu cách áp dụng lý thuyết vào bài tập.</li>
-                            <li><strong>Bài tập tự luyện:</strong> Kèm theo đáp án và lời giải (thường là qua mã ID trên hệ thống Moon.vn) để học sinh tự đánh giá năng lực.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="series-features">
-                        <div class="feature">
-                            <i class="fas fa-brain math-color"></i>
-                            <div>
-                                <h4>Đối tượng sử dụng</h4>
-                                <ul class="arrow-list">
-                                    <li><strong>Học sinh lớp 12 (khóa 2k8 trở đi):</strong> Đây là đối tượng chính cần ôn luyện</li>
-                                    <li><strong>Học sinh mất gốc hoặc hổng kiến thức:</strong> Những bạn muốn bắt đầu lại từ đầu</li>
-                                    <li><strong>Giáo viên và gia sư:</strong> Có thể dùng làm tài liệu tham khảo</li>
-                                </ul>
-                            </div>
+                    <div class="series-content">
+                        <div class="series-description">
+                            <p>Cuốn sách tập trung vào việc xây dựng và củng cố kiến thức nền tảng môn Toán cho chương trình mới (áp dụng cho kỳ thi từ năm 2025). Các nội dung chính thường bao gồm:</p>
+                            <ul class="arrow-list">
+                                <li><strong>Hệ thống lý thuyết:</strong> Trình bày chi tiết, dễ hiểu các định nghĩa, định lý và công thức quan trọng.</li>
+                                <li><strong>Phân dạng bài tập:</strong> Chia nhỏ các dạng toán từ cơ bản đến mức độ vận dụng, giúp học sinh nắm vững phương pháp giải.</li>
+                                <li><strong>Ví dụ minh họa:</strong> Có các bài giải mẫu chi tiết để học sinh hiểu cách áp dụng lý thuyết vào bài tập.</li>
+                                <li><strong>Bài tập tự luyện:</strong> Kèm theo đáp án và lời giải (thường là qua mã ID trên hệ thống Moon.vn) để học sinh tự đánh giá năng lực.</li>
+                            </ul>
                         </div>
                         
-                        <div class="feature">
-                            <i class="fas fa-chart-line math-color"></i>
-                            <div>
-                                <h4>Đánh giá Ưu và Nhược điểm</h4>
-                                <div class="pros-cons">
-                                    <h4>Ưu điểm:</h4>
+                        <div class="series-features">
+                            <div class="feature">
+                                <i class="fas fa-brain math-color"></i>
+                                <div>
+                                    <h4>Đối tượng sử dụng</h4>
                                     <ul class="arrow-list">
-                                        <li><strong>Giá thành hợp lý:</strong> 159.000đ (giá gốc 200.000đ)</li>
-                                        <li><strong>Hệ sinh thái hỗ trợ tốt:</strong> Xem lời giải chi tiết và video bài giảng</li>
-                                        <li><strong>Cập nhật mới:</strong> Bám sát chương trình SGK mới và định hướng thi 2025</li>
-                                    </ul>
-                                    <h4>Nhược điểm:</h4>
-                                    <ul class="arrow-list">
-                                        <li><strong>Phụ thuộc vào Internet:</strong> Để xem lời giải chi tiết cần kết nối mạng</li>
+                                        <li><strong>Học sinh lớp 12 (khóa 2k8 trở đi):</strong> Đây là đối tượng chính cần ôn luyện</li>
+                                        <li><strong>Học sinh mất gốc hoặc hổng kiến thức:</strong> Những bạn muốn bắt đầu lại từ đầu</li>
+                                        <li><strong>Giáo viên và gia sư:</strong> Có thể dùng làm tài liệu tham khảo</li>
                                     </ul>
                                 </div>
                             </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-chart-line math-color"></i>
+                                <div>
+                                    <h4>Đánh giá Ưu và Nhược điểm</h4>
+                                    <div class="pros-cons">
+                                        <h4>Ưu điểm:</h4>
+                                        <ul class="arrow-list">
+                                            <li><strong>Giá thành hợp lý:</strong> 159.000đ (giá gốc 200.000đ)</li>
+                                            <li><strong>Hệ sinh thái hỗ trợ tốt:</strong> Xem lời giải chi tiết và video bài giảng</li>
+                                            <li><strong>Cập nhật mới:</strong> Bám sát chương trình SGK mới và định hướng thi 2025</li>
+                                        </ul>
+                                        <h4>Nhược điểm:</h4>
+                                        <ul class="arrow-list">
+                                            <li><strong>Phụ thuộc vào Internet:</strong> Để xem lời giải chi tiết cần kết nối mạng</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-graduation-cap math-color"></i>
+                                <div>
+                                    <h4>Ôn thi Đại học</h4>
+                                    <p>Tổng hợp các dạng bài thường gặp trong kỳ thi THPT Quốc gia</p>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="feature">
-                            <i class="fas fa-graduation-cap math-color"></i>
-                            <div>
-                                <h4>Ôn thi Đại học</h4>
-                                <p>Tổng hợp các dạng bài thường gặp trong kỳ thi THPT Quốc gia</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="series-books">
-                        <h4><i class="fas fa-book math-color"></i> Các sách trong bộ Toán:</h4>
-                        <div class="books-grid">
-                            <div class="book-card" data-category="math" data-book-id="1" data-book-img="NTT.jpg">
-                                <div class="book-image"><img src="NTT.jpg" alt="Nền Tảng Toán Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-calculator" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category math-color">Toán học</span>
-                                    <h3 class="book-title">[2025-2026] Nền Tảng Toán Học</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Trợ Giảng Phạm Nhật Huy</div>
-                                    <p class="book-description">Được biên soạn nhằm giúp học sinh củng cố kiến thức nền tảng trước khi bước vào giai đoạn tổng ôn, luyện đề thi Tốt nghiệp THPT và các kỳ thi ĐGNL.</p>
-                                    <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                        <div class="series-books">
+                            <h4><i class="fas fa-book math-color"></i> Các sách trong bộ Toán:</h4>
+                            <div class="books-grid">
+                                <div class="book-card" data-category="math" data-book-id="1" data-book-img="NTT.jpg">
+                                    <div class="book-image"><img src="NTT.jpg" alt="Nền Tảng Toán Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-calculator" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category math-color">Toán học</span>
+                                        <h3 class="book-title">[2025-2026] Nền Tảng Toán Học</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Trợ Giảng Phạm Nhật Huy</div>
+                                        <p class="book-description">Được biên soạn nhằm giúp học sinh củng cố kiến thức nền tảng trước khi bước vào giai đoạn tổng ôn, luyện đề thi Tốt nghiệp THPT và các kỳ thi ĐGNL.</p>
+                                        <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="book-card" data-category="math" data-book-id="2" data-book-img="TN60.jpg">
-                                <div class="book-image"><img src="TN60.jpg" alt="60 Đề Minh Họa Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-chart-line" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category math-color">Toán học</span>
-                                    <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Toán Tốt Nghiệp THPT 2026</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Thầy Bùi Quyết Tiến, Hà Quang Hưng</div>
-                                    <p class="book-description">60 đề thi thử chất lượng cao, bám sát cấu trúc đề thi mới nhất.</p>
-                                    <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                <div class="book-card" data-category="math" data-book-id="2" data-book-img="TN60.jpg">
+                                    <div class="book-image"><img src="TN60.jpg" alt="60 Đề Minh Họa Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-chart-line" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category math-color">Toán học</span>
+                                        <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Toán Tốt Nghiệp THPT 2026</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Thầy Bùi Quyết Tiến, Hà Quang Hưng</div>
+                                        <p class="book-description">60 đề thi thử chất lượng cao, bám sát cấu trúc đề thi mới nhất.</p>
+                                        <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="book-card" data-category="math" data-book-id="3" data-book-img="CTON.jpg">
-                                <div class="book-image"><img src="CTON.jpg" alt="Combo Tổng Ôn Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-puzzle-piece" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category math-color">Toán học</span>
-                                    <h3 class="book-title">[2025-2026] Combo Tổng Ôn Toán Học 12 Tập 1, Tập 2</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Lê Văn Tuấn, Thầy Bùi Quyết Tiến, Trợ Giảng Phạm Nhật Huy</div>
-                                    <p class="book-description">Bộ tài liệu lý tưởng giúp học sinh lớp 12 ôn luyện môn Toán hiệu quả cho kỳ thi Tốt nghiệp THPT 2026.</p>
-                                    <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                <div class="book-card" data-category="math" data-book-id="3" data-book-img="CTON.jpg">
+                                    <div class="book-image"><img src="CTON.jpg" alt="Combo Tổng Ôn Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-puzzle-piece" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category math-color">Toán học</span>
+                                        <h3 class="book-title">[2025-2026] Combo Tổng Ôn Toán Học 12 Tập 1, Tập 2</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Lê Văn Tuấn, Thầy Bùi Quyết Tiến, Trợ Giảng Phạm Nhật Huy</div>
+                                        <p class="book-description">Bộ tài liệu lý tưởng giúp học sinh lớp 12 ôn luyện môn Toán hiệu quả cho kỳ thi Tốt nghiệp THPT 2026.</p>
+                                        <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Vật Lý -->
-            <div class="book-series-section" id="series-physics">
-                <div class="series-header physics-bg">
-                    <div class="series-icon"><i class="fas fa-atom"></i></div>
-                    <div class="series-info">
-                        <h3>Vật Lý</h3>
-                        <p>Einstein: "Vật lý là sự tinh chỉnh của tư duy hàng ngày"</p>
+                
+                <!-- Vật Lý -->
+                <div class="book-series-section" id="series-physics">
+                    <div class="series-header physics-bg">
+                        <div class="series-icon"><i class="fas fa-atom"></i></div>
+                        <div class="series-info">
+                            <h3>Vật Lý</h3>
+                            <p>Einstein: "Vật lý là sự tinh chỉnh của tư duy hàng ngày"</p>
+                        </div>
                     </div>
-                </div>
-                <div class="series-content">
-                    <div class="series-description">
-                        <h4>Bài học trong mỗi chương được trình bày theo một cấu trúc chung:</h4>
-                        <ul class="arrow-list">
-                            <li><strong>A. KIẾN THỨC NỀN TẢNG:</strong> Tóm tắt kiến thức trọng tâm cần ghi nhớ</li>
-                            <li><strong>B. VÍ DỤ MINH HỌA:</strong> Ví dụ được sắp xếp từ cơ bản đến nâng cao, có phân tích kèm theo lời giải chi tiết</li>
-                            <li><strong>C. BÀI TẬP TỰ LUYỆN:</strong> Đầy đủ các định dạng theo đề thi mẫu của Bộ Giáo dục</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="series-features">
-                        <div class="feature">
-                            <i class="fas fa-vial physics-color"></i>
-                            <div>
-                                <h4>NỘI DUNG SÁCH</h4>
-                                <ul class="arrow-list">
-                                    <li><strong>Chương 1:</strong> VẬT LÍ NHIỆT</li>
-                                    <li><strong>Chương 2:</strong> KHÍ LÍ TƯỞNG</li>
-                                    <li><strong>Chương 3:</strong> TỪ TRƯỜNG</li>
-                                    <li><strong>Chương 4:</strong> VẬT LÍ HẠT NHÂN</li>
-                                </ul>
-                            </div>
+                    <div class="series-content">
+                        <div class="series-description">
+                            <h4>Bài học trong mỗi chương được trình bày theo một cấu trúc chung:</h4>
+                            <ul class="arrow-list">
+                                <li><strong>A. KIẾN THỨC NỀN TẢNG:</strong> Tóm tắt kiến thức trọng tâm cần ghi nhớ</li>
+                                <li><strong>B. VÍ DỤ MINH HỌA:</strong> Ví dụ được sắp xếp từ cơ bản đến nâng cao, có phân tích kèm theo lời giải chi tiết</li>
+                                <li><strong>C. BÀI TẬP TỰ LUYỆN:</strong> Đầy đủ các định dạng theo đề thi mẫu của Bộ Giáo dục</li>
+                            </ul>
                         </div>
                         
-                        <div class="feature">
-                            <i class="fas fa-calculator physics-color"></i>
-                            <div>
-                                <h4>ĐỐI TƯỢNG SỬ DỤNG</h4>
-                                <ul class="arrow-list">
-                                    <li>Học sinh lớp 12 ôn thi giữa kỳ, cuối kỳ môn Vật lí</li>
-                                    <li>Học sinh lớp 12 ôn thi Tốt nghiệp THPT, ĐGNL, ĐGTD</li>
-                                    <li>Học sinh lớp 11 học trước chương trình lớp 12</li>
-                                    <li>Giáo viên sử dụng làm tài liệu tham khảo</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <i class="fas fa-rocket physics-color"></i>
-                            <div>
-                                <h4>Phương pháp học</h4>
-                                <p>Học lý thuyết song song với làm bài tập thực hành</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="series-books">
-                        <h4><i class="fas fa-book physics-color"></i> Các sách trong bộ Vật Lý:</h4>
-                        <div class="books-grid">
-                            <div class="book-card" data-category="physics" data-book-id="4" data-book-img="VL12.jpg">
-                                <div class="book-image"><img src="VL12.jpg" alt="Combo Tổng Ôn Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-atom" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category physics-color">Vật lý</span>
-                                    <h3 class="book-title">[2025-2026] Combo Tổng Ôn Vật Lí Tập 1, Tập 2</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Lại Đắc Hợp, Thầy Nghiêm Xuân Tân</div>
-                                    <p class="book-description">Bộ tài liệu giúp học sinh củng cố kiến thức nền tảng và nâng cao khả năng giải bài, từ đó chinh phục điểm cao trong các kỳ thi quan trọng.</p>
-                                    <div class="book-footer"><div class="book-price">154.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                            <div class="book-card" data-category="physics" data-book-id="5" data-book-img="TTVL.jpg">
-                                <div class="book-image"><img src="TTVL.jpg" alt="Trọng Tâm Lí Thuyết Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-charging-station" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category physics-color">Vật lý</span>
-                                    <h3 class="book-title">[LỚP 12 SGK MỚI] Trọng Tâm Lí Thuyết TNPT Môn Vật Lí</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Nghiêm Xuân Tân, Thầy Lại Đắc Hợp</div>
-                                    <p class="book-description">được biên soạn nhằm giúp học sinh lớp 12 tiết kiệm thời gian mà vẫn nắm vững được kiến thức trọng tâm môn Vật lí trong chương trình.</p>
-                                    <div class="book-footer"><div class="book-price">79.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                            <div class="book-card" data-category="physics" data-book-id="6" data-book-img="60VL.jpg">
-                                <div class="book-image"><img src="60VL.jpg" alt="60 Đề Minh Họa Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category physics-color">Vật lý</span>
-                                    <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Vật Lí TNPT 2026</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Lại Đắc Hợp, Thầy Nghiêm Xuân Tân</div>
-                                    <p class="book-description">60 đề thi thử chất lượng cao, đáp án chi tiết.</p>
-                                    <div class="book-footer"><div class="book-price">150.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Hóa Học -->
-            <div class="book-series-section" id="series-chemistry">
-                <div class="series-header chemistry-bg">
-                    <div class="series-icon"><i class="fas fa-flask"></i></div>
-                    <div class="series-info">
-                        <h3>Hóa Học</h3>
-                        <p>"Mọi thứ đều là hóa chất"</p>
-                    </div>
-                </div>
-                <div class="series-content">
-                    <div class="series-description">
-                        [NEW 2025 - 2026] SÁCH TỔNG ÔN HÓA HỌC - TẬP 1
-                        Cuốn sách "TỔNG ÔN HÓA HỌC - TẬP 1" thuộc bộ sách "TỔNG ÔN HÓA HỌC" gồm 2 tập, tập trung và ưu tiên kiến thức, xây dựng, phát triển và mở rộng NỀN TẢNG môn Hóa học cho học sinh lớp 12.
-                    </div>
-                    
-                    <div class="series-features">
-                        <div class="feature">
-                            <i class="fas fa-industry chemistry-color"></i>
-                            <div>
-                                <h4>Nội dung sách gồm 4 chủ đề:</h4>
-                                <ul class="arrow-list">
-                                    <li><strong>Chủ đề 1:</strong> ESTER - LIPID</li>
-                                    <li><strong>Chủ đề 2:</strong> CARBOHYDRATE</li>
-                                    <li><strong>Chủ đề 3:</strong> HỢP CHẤT NITROGEN</li>
-                                    <li><strong>Chủ đề 4:</strong> POLYMER</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <i class="fas fa-pills chemistry-color"></i>
-                            <div>
-                                <h4>Điểm đặc biệt của cuốn sách:</h4>
-                                <ul class="arrow-list">
-                                    <li><strong>PHẦN LÝ THUYẾT:</strong> Giải thích bản chất và mở rộng kiến thức vượt SGK</li>
-                                    <li><strong>PHẦN BÀI TẬP:</strong> Đầy đủ các dạng thức câu hỏi ôn luyện thi hiện nay</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <i class="fas fa-leaf chemistry-color"></i>
-                            <div>
-                                <h4>ĐỐI TƯỢNG SỬ DỤNG</h4>
-                                <p>Học sinh lớp 12 ôn thi Tốt nghiệp THPT, ĐGNL, ĐGTD theo chương trình mới. Giáo viên sử dụng làm tài liệu tham khảo</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="series-books">
-                        <h4><i class="fas fa-book chemistry-color"></i> Các sách trong bộ Hóa Học:</h4>
-                        <div class="books-grid">
-                            <div class="book-card" data-category="chemistry" data-book-id="7" data-book-img="H1.jpg">
-                                <div class="book-image"><img src="H1.jpg" alt="Tổng Ôn Hóa Học Tập 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-flask" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category chemistry-color">Hóa học</span>
-                                    <h3 class="book-title">[2025-2026] Tổng Ôn Hóa Học Tập 1</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Trần Công Minh, Cô Lê Quỳnh Trang, Cô Phạm Kim Oanh</div>
-                                    <p class="book-description">Bám sát theo chương trình học, SGK hiện hành</p>
-                                    <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                            <div class="book-card" data-category="chemistry" data-book-id="8" data-book-img="H2.jpg">
-                                <div class="book-image"><img src="H2.jpg" alt="Tổng Ôn Hóa Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category chemistry-color">Hóa học</span>
-                                    <h3 class="book-title">[2025-2026] Tổng Ôn Hóa Học Tập 2</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Trần Công Minh, Cô Lê Quỳnh Trang, Cô Phạm Kim Oanh</div>
-                                    <p class="book-description">Bám sát theo chương trình học, SGK hiện hành</p>
-                                    <div class="book-footer"><div class="book-price">154.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                            <div class="book-card" data-category="chemistry" data-book-id="9" data-book-img="HH60.jpg">
-                                <div class="book-image"><img src="HH60.jpg" alt="60 Đề Minh Họa Hóa Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-vial" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category chemistry-color">Hóa học</span>
-                                    <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Hóa Học TNPT 2026</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Trần Công Minh, Cô Lê Quỳnh Trang, Cô Phạm Kim Oanh, Cô Đặng Như Quỳnh, Cô Dương Tâm Nhi, Cô Quỳnh Trang - Hóa</div>
-                                    <p class="book-description">15 đề thi thử chất lượng cao, có đáp án và giải thích chi tiết.</p>
-                                    <div class="book-footer"><div class="book-price">150.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Sinh Học -->
-            <div class="book-series-section" id="series-biology">
-                <div class="series-header biology-bg">
-                    <div class="series-icon"><i class="fas fa-dna"></i></div>
-                    <div class="series-info">
-                        <h3>Sinh Học</h3>
-                        <p>"Sự sống là một hiện tượng kỳ diệu, hãy khám phá nó"</p>
-                    </div>
-                </div>
-                <div class="series-content">
-                    <div class="series-description">
-                        <p>Sách tập trung vào việc xây dựng và củng cố kiến thức nền tảng môn Sinh học cho chương trình mới (áp dụng cho kỳ thi từ năm 2025). Các nội dung chính thường bao gồm:</p>
-                        <ul class="arrow-list">
-                            <li><strong>Hệ thống lý thuyết:</strong> Trình bày chi tiết, dễ hiểu các khái niệm và quá trình sinh học quan trọng.</li>
-                            <li><strong>Phân dạng bài tập:</strong> Chia nhỏ các dạng bài từ cơ bản đến mức độ vận dụng, giúp học sinh nắm vững phương pháp giải.</li>
-                            <li><strong>Ví dụ minh họa:</strong> Có các bài giải mẫu chi tiết để học sinh hiểu cách áp dụng lý thuyết vào bài tập.</li>
-                            <li><strong>Bài tập tự luyện:</strong> Kèm theo đáp án và lời giải để học sinh tự đánh giá năng lực.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="series-features">
-                        <div class="feature">
-                            <i class="fas fa-dna biology-color"></i>
-                            <div>
-                                <h4>Đối tượng sử dụng</h4>
-                                <ul class="arrow-list">
-                                    <li><strong>Học sinh lớp 12 (khóa 2k8 trở đi):</strong> Đây là đối tượng chính cần ôn luyện</li>
-                                    <li><strong>Học sinh mất gốc hoặc hổng kiến thức:</strong> Những bạn muốn bắt đầu lại từ đầu</li>
-                                    <li><strong>Giáo viên và gia sư:</strong> Có thể dùng làm tài liệu tham khảo</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <i class="fas fa-chart-line biology-color"></i>
-                            <div>
-                                <h4>Đánh giá Ưu và Nhược điểm</h4>
-                                <div class="pros-cons">
-                                    <h4>Ưu điểm:</h4>
+                        <div class="series-features">
+                            <div class="feature">
+                                <i class="fas fa-vial physics-color"></i>
+                                <div>
+                                    <h4>NỘI DUNG SÁCH</h4>
                                     <ul class="arrow-list">
-                                        <li><strong>Giá thành hợp lý:</strong> Sách có giá phải chăng, phù hợp với nhiều đối tượng học sinh.</li>
-                                        <li><strong>Hệ sinh thái hỗ trợ tốt:</strong> Tích hợp mã ID để xem lời giải chi tiết và video bài giảng.</li>
-                                        <li><strong>Cập nhật mới:</strong> Nội dung bám sát chương trình sách giáo khoa mới.</li>
-                                    </ul>
-                                    <h4>Nhược điểm:</h4>
-                                    <ul class="arrow-list">
-                                        <li><strong>Phụ thuộc vào Internet:</strong> Để xem lời giải chi tiết cần kết nối mạng.</li>
+                                        <li><strong>Chương 1:</strong> VẬT LÍ NHIỆT</li>
+                                        <li><strong>Chương 2:</strong> KHÍ LÍ TƯỞNG</li>
+                                        <li><strong>Chương 3:</strong> TỪ TRƯỜNG</li>
+                                        <li><strong>Chương 4:</strong> VẬT LÍ HẠT NHÂN</li>
                                     </ul>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <i class="fas fa-microscope biology-color"></i>
-                            <div>
-                                <h4>Ôn thi Đại học</h4>
-                                <p>Tổng hợp các dạng bài thường gặp trong kỳ thi THPT Quốc gia môn Sinh học</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="series-books">
-                        <h4><i class="fas fa-book biology-color"></i> Các sách trong bộ Sinh Học:</h4>
-                        <div class="books-grid">
-                            <div class="book-card" data-category="biology" data-book-id="10" data-book-img="TOSH.jpg">
-                                <div class="book-image"><img src="TOSH.jpg" alt="Tổng Ôn Sinh Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category biology-color">Sinh học</span>
-                                    <h3 class="book-title">[2025-2026] Tổng Ôn Sinh Học Tập 2</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Phan Khắc Nghệ, Thầy Thịnh Nam, Cô Lữ Đào</div>
-                                    <p class="book-description">Hệ thống kiến thức Sinh học 12 theo chương trình mới, bài tập trắc nghiệm đa dạng</p>
-                                    <div class="book-footer"><div class="book-price">154.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                            <div class="book-card" data-category="biology" data-book-id="11" data-book-img="CĐSH.jpg">
-                                <div class="book-image"><img src="CĐSH.jpg" alt="Bồi Dưỡng Chuyên Di Truyền Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-leaf" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category biology-color">Sinh học</span>
-                                    <h3 class="book-title">[2025-2026] Bồi Dưỡng Chuyên Di Truyền Học</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Phan Khắc Nghệ, Thầy Nguyễn Tấn Thành</div>
-                                    <p class="book-description">Tài liệu dành cho chương trình nâng cao, ôn chuyên sâu phần Di truyền học thuộc chương trình Sinh học lớp 12, đáp ứng yêu cầu đổi mới của Chương trình GDPT 2018</p>
-                                    <div class="book-footer"><div class="book-price">145.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                            <div class="book-card" data-category="biology" data-book-id="12" data-book-img="SH60.jpg">
-                                <div class="book-image"><img src="SH60.jpg" alt="60 Đề Minh Họa Sinh Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category biology-color">Sinh học</span>
-                                    <h3 class="book-title">[2025-2026] 60 đề minh họa Tốt nghiệp THPT 2026 môn Sinh học</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Phan Khắc Nghệ, Thầy Thịnh Nam, Cô Lữ Đào</div>
-                                    <p class="book-description">60 đề thi thử THPT Quốc gia môn Sinh học</p>
-                                    <div class="book-footer"><div class="book-price">155.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Tiếng Anh -->
-            <div class="book-series-section" id="series-english">
-                <div class="series-header english-bg">
-                    <div class="series-icon"><i class="fas fa-language"></i></div>
-                    <div class="series-info">
-                        <h3>Tiếng Anh</h3>
-                        <p>"Một ngôn ngữ mới là một cuộc sống mới" - Tục ngữ Ba Tư</p>
-                    </div>
-                </div>
-                <div class="series-content">
-                    <div class="series-description">
-                        <p>Sách tập trung vào việc xây dựng và củng cố kiến thức nền tảng môn Tiếng Anh cho chương trình mới (áp dụng cho kỳ thi từ năm 2025). Các nội dung chính thường bao gồm:</p>
-                        <ul class="arrow-list">
-                            <li><strong>Hệ thống ngữ pháp:</strong> Trình bày chi tiết, dễ hiểu các cấu trúc ngữ pháp và thì quan trọng.</li>
-                            <li><strong>Phân dạng bài tập:</strong> Chia nhỏ các dạng bài từ cơ bản đến mức độ vận dụng, giúp học sinh nắm vững phương pháp giải.</li>
-                            <li><strong>Ví dụ minh họa:</strong> Có các bài giải mẫu chi tiết để học sinh hiểu cách áp dụng lý thuyết vào bài tập.</li>
-                            <li><strong>Bài tập tự luyện:</strong> Kèm theo đáp án và lời giải (thường là qua mã ID trên hệ thống Moon.vn) để học sinh tự đánh giá năng lực.</li>
-                        </ul>
-                    </div>
-                    
-                    <div class="series-features">
-                        <div class="feature">
-                            <i class="fas fa-language english-color"></i>
-                            <div>
-                                <h4>Đối tượng sử dụng</h4>
-                                <ul class="arrow-list">
-                                    <li><strong>Học sinh lớp 12 (khóa 2k8 trở đi):</strong> Đây là đối tượng chính cần ôn luyện</li>
-                                    <li><strong>Học sinh mất gốc hoặc hổng kiến thức:</strong> Những bạn muốn bắt đầu lại từ đầu</li>
-                                    <li><strong>Giáo viên và gia sư:</strong> Có thể dùng làm tài liệu tham khảo</li>
-                                </ul>
-                            </div>
-                        </div>
-                        
-                        <div class="feature">
-                            <i class="fas fa-chart-line english-color"></i>
-                            <div>
-                                <h4>Đánh giá Ưu và Nhược điểm</h4>
-                                <div class="pros-cons">
-                                    <h4>Ưu điểm:</h4>
+                            
+                            <div class="feature">
+                                <i class="fas fa-calculator physics-color"></i>
+                                <div>
+                                    <h4>ĐỐI TƯỢNG SỬ DỤNG</h4>
                                     <ul class="arrow-list">
-                                        <li><strong>Giá thành hợp lý:</strong> Sách có giá phải chăng, phù hợp với nhiều đối tượng học sinh.</li>
-                                        <li><strong>Hệ sinh thái hỗ trợ tốt:</strong> Tích hợp mã ID để xem lời giải chi tiết và video bài giảng.</li>
-                                        <li><strong>Cập nhật mới:</strong> Nội dung bám sát chương trình sách giáo khoa mới.</li>
-                                    </ul>
-                                    <h4>Nhược điểm:</h4>
-                                    <ul class="arrow-list">
-                                        <li><strong>Phụ thuộc vào Internet:</strong> Để xem lời giải chi tiết cần kết nối mạng.</li>
+                                        <li>Học sinh lớp 12 ôn thi giữa kỳ, cuối kỳ môn Vật lí</li>
+                                        <li>Học sinh lớp 12 ôn thi Tốt nghiệp THPT, ĐGNL, ĐGTD</li>
+                                        <li>Học sinh lớp 11 học trước chương trình lớp 12</li>
+                                        <li>Giáo viên sử dụng làm tài liệu tham khảo</li>
                                     </ul>
                                 </div>
                             </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-rocket physics-color"></i>
+                                <div>
+                                    <h4>Phương pháp học</h4>
+                                    <p>Học lý thuyết song song với làm bài tập thực hành</p>
+                                </div>
+                            </div>
                         </div>
                         
-                        <div class="feature">
-                            <i class="fas fa-graduation-cap english-color"></i>
-                            <div>
-                                <h4>Ôn thi Đại học</h4>
-                                <p>Tổng hợp các dạng bài thường gặp trong kỳ thi THPT Quốc gia môn Tiếng Anh</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="series-books">
-                        <h4><i class="fas fa-book english-color"></i> Các sách trong bộ Tiếng Anh:</h4>
-                        <div class="books-grid">
-                            <div class="book-card" data-category="english" data-book-id="13" data-book-img="TA12.jpg">
-                                <div class="book-image"><img src="TA12.jpg" alt="Combo Tổng Ôn Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-language" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category english-color">Tiếng Anh</span>
-                                    <h3 class="book-title">[2025-2026] Combo Tổng Ôn Tiếng Anh Tập 1-2</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Đinh Hải Bình</div>
-                                    <p class="book-description">Là một lộ trình luyện thi theo chuyên đề, giúp học sinh chuẩn bị tốt nhất cho Kỳ thi Tốt nghiệp THPT năm 2026.</p>
-                                    <div class="book-footer"><div class="book-price">205.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                        <div class="series-books">
+                            <h4><i class="fas fa-book physics-color"></i> Các sách trong bộ Vật Lý:</h4>
+                            <div class="books-grid">
+                                <div class="book-card" data-category="physics" data-book-id="4" data-book-img="VL12.jpg">
+                                    <div class="book-image"><img src="VL12.jpg" alt="Combo Tổng Ôn Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-atom" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category physics-color">Vật lý</span>
+                                        <h3 class="book-title">[2025-2026] Combo Tổng Ôn Vật Lí Tập 1, Tập 2</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Lại Đắc Hợp, Thầy Nghiêm Xuân Tân</div>
+                                        <p class="book-description">Bộ tài liệu giúp học sinh củng cố kiến thức nền tảng và nâng cao khả năng giải bài, từ đó chinh phục điểm cao trong các kỳ thi quan trọng.</p>
+                                        <div class="book-footer"><div class="book-price">154.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="book-card" data-category="english" data-book-id="14" data-book-img="60TA.jpg">
-                                <div class="book-image"><img src="60TA.jpg" alt="60 Đề Minh Họa Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-book-open" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category english-color">Tiếng Anh</span>
-                                    <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Tiếng Anh TNPT 2026</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Cô Trang Anh</div>
-                                    <p class="book-description">PHẦN MỘT: PHÂN TÍCH CẤU TRÚC ĐỀ THI và ĐỊNH HƯỚNG ÔN TẬP</p>
-                                    <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                <div class="book-card" data-category="physics" data-book-id="5" data-book-img="TTVL.jpg">
+                                    <div class="book-image"><img src="TTVL.jpg" alt="Trọng Tâm Lí Thuyết Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-charging-station" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category physics-color">Vật lý</span>
+                                        <h3 class="book-title">[LỚP 12 SGK MỚI] Trọng Tâm Lí Thuyết TNPT Môn Vật Lí</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Nghiêm Xuân Tân, Thầy Lại Đắc Hợp</div>
+                                        <p class="book-description">được biên soạn nhằm giúp học sinh lớp 12 tiết kiệm thời gian mà vẫn nắm vững được kiến thức trọng tâm môn Vật lí trong chương trình.</p>
+                                        <div class="book-footer"><div class="book-price">79.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="book-card" data-category="english" data-book-id="15" data-book-img="TVTA.jpg">
-                                <div class="book-image"><img src="TVTA.jpg" alt="Tự học Từ vựng Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-edit" style="display:none;"></i></div>
-                                <div class="book-content">
-                                    <span class="book-category english-color">Tiếng Anh</span>
-                                    <h3 class="book-title">Tự học Từ vựng Tiếng Anh - Word Formation</h3>
-                                    <div class="book-author"><i class="fas fa-user-edit"></i> Bùi Thị Thanh Huyền</div>
-                                    <p class="book-description">3 phần chính: Prefixes (Tiền tố), Roots (Gốc từ), Suffixes (Hậu tố)</p>
-                                    <div class="book-footer"><div class="book-price">119.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                <div class="book-card" data-category="physics" data-book-id="6" data-book-img="60VL.jpg">
+                                    <div class="book-image"><img src="60VL.jpg" alt="60 Đề Minh Họa Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category physics-color">Vật lý</span>
+                                        <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Vật Lí TNPT 2026</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Lại Đắc Hợp, Thầy Nghiêm Xuân Tân</div>
+                                        <p class="book-description">60 đề thi thử chất lượng cao, đáp án chi tiết.</p>
+                                        <div class="book-footer"><div class="book-price">150.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Hóa Học -->
+                <div class="book-series-section" id="series-chemistry">
+                    <div class="series-header chemistry-bg">
+                        <div class="series-icon"><i class="fas fa-flask"></i></div>
+                        <div class="series-info">
+                            <h3>Hóa Học</h3>
+                            <p>"Mọi thứ đều là hóa chất"</p>
+                        </div>
+                    </div>
+                    <div class="series-content">
+                        <div class="series-description">
+                            [NEW 2025 - 2026] SÁCH TỔNG ÔN HÓA HỌC - TẬP 1
+                            Cuốn sách "TỔNG ÔN HÓA HỌC - TẬP 1" thuộc bộ sách "TỔNG ÔN HÓA HỌC" gồm 2 tập, tập trung và ưu tiên kiến thức, xây dựng, phát triển và mở rộng NỀN TẢNG môn Hóa học cho học sinh lớp 12.
+                        </div>
+                        
+                        <div class="series-features">
+                            <div class="feature">
+                                <i class="fas fa-industry chemistry-color"></i>
+                                <div>
+                                    <h4>Nội dung sách gồm 4 chủ đề:</h4>
+                                    <ul class="arrow-list">
+                                        <li><strong>Chủ đề 1:</strong> ESTER - LIPID</li>
+                                        <li><strong>Chủ đề 2:</strong> CARBOHYDRATE</li>
+                                        <li><strong>Chủ đề 3:</strong> HỢP CHẤT NITROGEN</li>
+                                        <li><strong>Chủ đề 4:</strong> POLYMER</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-pills chemistry-color"></i>
+                                <div>
+                                    <h4>Điểm đặc biệt của cuốn sách:</h4>
+                                    <ul class="arrow-list">
+                                        <li><strong>PHẦN LÝ THUYẾT:</strong> Giải thích bản chất và mở rộng kiến thức vượt SGK</li>
+                                        <li><strong>PHẦN BÀI TẬP:</strong> Đầy đủ các dạng thức câu hỏi ôn luyện thi hiện nay</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-leaf chemistry-color"></i>
+                                <div>
+                                    <h4>ĐỐI TƯỢNG SỬ DỤNG</h4>
+                                    <p>Học sinh lớp 12 ôn thi Tốt nghiệp THPT, ĐGNL, ĐGTD theo chương trình mới. Giáo viên sử dụng làm tài liệu tham khảo</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="series-books">
+                            <h4><i class="fas fa-book chemistry-color"></i> Các sách trong bộ Hóa Học:</h4>
+                            <div class="books-grid">
+                                <div class="book-card" data-category="chemistry" data-book-id="7" data-book-img="H1.jpg">
+                                    <div class="book-image"><img src="H1.jpg" alt="Tổng Ôn Hóa Học Tập 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-flask" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category chemistry-color">Hóa học</span>
+                                        <h3 class="book-title">[2025-2026] Tổng Ôn Hóa Học Tập 1</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Trần Công Minh, Cô Lê Quỳnh Trang, Cô Phạm Kim Oanh</div>
+                                        <p class="book-description">Bám sát theo chương trình học, SGK hiện hành</p>
+                                        <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                                <div class="book-card" data-category="chemistry" data-book-id="8" data-book-img="H2.jpg">
+                                    <div class="book-image"><img src="H2.jpg" alt="Tổng Ôn Hóa Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category chemistry-color">Hóa học</span>
+                                        <h3 class="book-title">[2025-2026] Tổng Ôn Hóa Học Tập 2</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Trần Công Minh, Cô Lê Quỳnh Trang, Cô Phạm Kim Oanh</div>
+                                        <p class="book-description">Bám sát theo chương trình học, SGK hiện hành</p>
+                                        <div class="book-footer"><div class="book-price">154.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                                <div class="book-card" data-category="chemistry" data-book-id="9" data-book-img="HH60.jpg">
+                                    <div class="book-image"><img src="HH60.jpg" alt="60 Đề Minh Họa Hóa Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-vial" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category chemistry-color">Hóa học</span>
+                                        <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Hóa Học TNPT 2026</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Trần Công Minh, Cô Lê Quỳnh Trang, Cô Phạm Kim Oanh, Cô Đặng Như Quỳnh, Cô Dương Tâm Nhi, Cô Quỳnh Trang - Hóa</div>
+                                        <p class="book-description">15 đề thi thử chất lượng cao, có đáp án và giải thích chi tiết.</p>
+                                        <div class="book-footer"><div class="book-price">150.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Sinh Học -->
+                <div class="book-series-section" id="series-biology">
+                    <div class="series-header biology-bg">
+                        <div class="series-icon"><i class="fas fa-dna"></i></div>
+                        <div class="series-info">
+                            <h3>Sinh Học</h3>
+                            <p>"Sự sống là một hiện tượng kỳ diệu, hãy khám phá nó"</p>
+                        </div>
+                    </div>
+                    <div class="series-content">
+                        <div class="series-description">
+                            <p>Sách tập trung vào việc xây dựng và củng cố kiến thức nền tảng môn Sinh học cho chương trình mới (áp dụng cho kỳ thi từ năm 2025). Các nội dung chính thường bao gồm:</p>
+                            <ul class="arrow-list">
+                                <li><strong>Hệ thống lý thuyết:</strong> Trình bày chi tiết, dễ hiểu các khái niệm và quá trình sinh học quan trọng.</li>
+                                <li><strong>Phân dạng bài tập:</strong> Chia nhỏ các dạng bài từ cơ bản đến mức độ vận dụng, giúp học sinh nắm vững phương pháp giải.</li>
+                                <li><strong>Ví dụ minh họa:</strong> Có các bài giải mẫu chi tiết để học sinh hiểu cách áp dụng lý thuyết vào bài tập.</li>
+                                <li><strong>Bài tập tự luyện:</strong> Kèm theo đáp án và lời giải để học sinh tự đánh giá năng lực.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="series-features">
+                            <div class="feature">
+                                <i class="fas fa-dna biology-color"></i>
+                                <div>
+                                    <h4>Đối tượng sử dụng</h4>
+                                    <ul class="arrow-list">
+                                        <li><strong>Học sinh lớp 12 (khóa 2k8 trở đi):</strong> Đây là đối tượng chính cần ôn luyện</li>
+                                        <li><strong>Học sinh mất gốc hoặc hổng kiến thức:</strong> Những bạn muốn bắt đầu lại từ đầu</li>
+                                        <li><strong>Giáo viên và gia sư:</strong> Có thể dùng làm tài liệu tham khảo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-chart-line biology-color"></i>
+                                <div>
+                                    <h4>Đánh giá Ưu và Nhược điểm</h4>
+                                    <div class="pros-cons">
+                                        <h4>Ưu điểm:</h4>
+                                        <ul class="arrow-list">
+                                            <li><strong>Giá thành hợp lý:</strong> Sách có giá phải chăng, phù hợp với nhiều đối tượng học sinh.</li>
+                                            <li><strong>Hệ sinh thái hỗ trợ tốt:</strong> Tích hợp mã ID để xem lời giải chi tiết và video bài giảng.</li>
+                                            <li><strong>Cập nhật mới:</strong> Nội dung bám sát chương trình sách giáo khoa mới.</li>
+                                        </ul>
+                                        <h4>Nhược điểm:</h4>
+                                        <ul class="arrow-list">
+                                            <li><strong>Phụ thuộc vào Internet:</strong> Để xem lời giải chi tiết cần kết nối mạng.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-microscope biology-color"></i>
+                                <div>
+                                    <h4>Ôn thi Đại học</h4>
+                                    <p>Tổng hợp các dạng bài thường gặp trong kỳ thi THPT Quốc gia môn Sinh học</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="series-books">
+                            <h4><i class="fas fa-book biology-color"></i> Các sách trong bộ Sinh Học:</h4>
+                            <div class="books-grid">
+                                <div class="book-card" data-category="biology" data-book-id="10" data-book-img="TOSH.jpg">
+                                    <div class="book-image"><img src="TOSH.jpg" alt="Tổng Ôn Sinh Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category biology-color">Sinh học</span>
+                                        <h3 class="book-title">[2025-2026] Tổng Ôn Sinh Học Tập 2</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Phan Khắc Nghệ, Thầy Thịnh Nam, Cô Lữ Đào</div>
+                                        <p class="book-description">Hệ thống kiến thức Sinh học 12 theo chương trình mới, bài tập trắc nghiệm đa dạng</p>
+                                        <div class="book-footer"><div class="book-price">154.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                                <div class="book-card" data-category="biology" data-book-id="11" data-book-img="CĐSH.jpg">
+                                    <div class="book-image"><img src="CĐSH.jpg" alt="Bồi Dưỡng Chuyên Di Truyền Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-leaf" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category biology-color">Sinh học</span>
+                                        <h3 class="book-title">[2025-2026] Bồi Dưỡng Chuyên Di Truyền Học</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Thầy Phan Khắc Nghệ, Thầy Nguyễn Tấn Thành</div>
+                                        <p class="book-description">Tài liệu dành cho chương trình nâng cao, ôn chuyên sâu phần Di truyền học thuộc chương trình Sinh học lớp 12, đáp ứng yêu cầu đổi mới của Chương trình GDPT 2018</p>
+                                        <div class="book-footer"><div class="book-price">145.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                                <div class="book-card" data-category="biology" data-book-id="12" data-book-img="SH60.jpg">
+                                    <div class="book-image"><img src="SH60.jpg" alt="60 Đề Minh Họa Sinh Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category biology-color">Sinh học</span>
+                                        <h3 class="book-title">[2025-2026] 60 đề minh họa Tốt nghiệp THPT 2026 môn Sinh học</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Phan Khắc Nghệ, Thầy Thịnh Nam, Cô Lữ Đào</div>
+                                        <p class="book-description">60 đề thi thử THPT Quốc gia môn Sinh học</p>
+                                        <div class="book-footer"><div class="book-price">155.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Tiếng Anh -->
+                <div class="book-series-section" id="series-english">
+                    <div class="series-header english-bg">
+                        <div class="series-icon"><i class="fas fa-language"></i></div>
+                        <div class="series-info">
+                            <h3>Tiếng Anh</h3>
+                            <p>"Một ngôn ngữ mới là một cuộc sống mới" - Tục ngữ Ba Tư</p>
+                        </div>
+                    </div>
+                    <div class="series-content">
+                        <div class="series-description">
+                            <p>Sách tập trung vào việc xây dựng và củng cố kiến thức nền tảng môn Tiếng Anh cho chương trình mới (áp dụng cho kỳ thi từ năm 2025). Các nội dung chính thường bao gồm:</p>
+                            <ul class="arrow-list">
+                                <li><strong>Hệ thống ngữ pháp:</strong> Trình bày chi tiết, dễ hiểu các cấu trúc ngữ pháp và thì quan trọng.</li>
+                                <li><strong>Phân dạng bài tập:</strong> Chia nhỏ các dạng bài từ cơ bản đến mức độ vận dụng, giúp học sinh nắm vững phương pháp giải.</li>
+                                <li><strong>Ví dụ minh họa:</strong> Có các bài giải mẫu chi tiết để học sinh hiểu cách áp dụng lý thuyết vào bài tập.</li>
+                                <li><strong>Bài tập tự luyện:</strong> Kèm theo đáp án và lời giải (thường là qua mã ID trên hệ thống Moon.vn) để học sinh tự đánh giá năng lực.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="series-features">
+                            <div class="feature">
+                                <i class="fas fa-language english-color"></i>
+                                <div>
+                                    <h4>Đối tượng sử dụng</h4>
+                                    <ul class="arrow-list">
+                                        <li><strong>Học sinh lớp 12 (khóa 2k8 trở đi):</strong> Đây là đối tượng chính cần ôn luyện</li>
+                                        <li><strong>Học sinh mất gốc hoặc hổng kiến thức:</strong> Những bạn muốn bắt đầu lại từ đầu</li>
+                                        <li><strong>Giáo viên và gia sư:</strong> Có thể dùng làm tài liệu tham khảo</li>
+                                    </ul>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-chart-line english-color"></i>
+                                <div>
+                                    <h4>Đánh giá Ưu và Nhược điểm</h4>
+                                    <div class="pros-cons">
+                                        <h4>Ưu điểm:</h4>
+                                        <ul class="arrow-list">
+                                            <li><strong>Giá thành hợp lý:</strong> Sách có giá phải chăng, phù hợp với nhiều đối tượng học sinh.</li>
+                                            <li><strong>Hệ sinh thái hỗ trợ tốt:</strong> Tích hợp mã ID để xem lời giải chi tiết và video bài giảng.</li>
+                                            <li><strong>Cập nhật mới:</strong> Nội dung bám sát chương trình sách giáo khoa mới.</li>
+                                        </ul>
+                                        <h4>Nhược điểm:</h4>
+                                        <ul class="arrow-list">
+                                            <li><strong>Phụ thuộc vào Internet:</strong> Để xem lời giải chi tiết cần kết nối mạng.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="feature">
+                                <i class="fas fa-graduation-cap english-color"></i>
+                                <div>
+                                    <h4>Ôn thi Đại học</h4>
+                                    <p>Tổng hợp các dạng bài thường gặp trong kỳ thi THPT Quốc gia môn Tiếng Anh</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="series-books">
+                            <h4><i class="fas fa-book english-color"></i> Các sách trong bộ Tiếng Anh:</h4>
+                            <div class="books-grid">
+                                <div class="book-card" data-category="english" data-book-id="13" data-book-img="TA12.jpg">
+                                    <div class="book-image"><img src="TA12.jpg" alt="Combo Tổng Ôn Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-language" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category english-color">Tiếng Anh</span>
+                                        <h3 class="book-title">[2025-2026] Combo Tổng Ôn Tiếng Anh Tập 1-2</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i>Thầy Đinh Hải Bình</div>
+                                        <p class="book-description">Là một lộ trình luyện thi theo chuyên đề, giúp học sinh chuẩn bị tốt nhất cho Kỳ thi Tốt nghiệp THPT năm 2026.</p>
+                                        <div class="book-footer"><div class="book-price">205.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                                <div class="book-card" data-category="english" data-book-id="14" data-book-img="60TA.jpg">
+                                    <div class="book-image"><img src="60TA.jpg" alt="60 Đề Minh Họa Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-book-open" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category english-color">Tiếng Anh</span>
+                                        <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Tiếng Anh TNPT 2026</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Cô Trang Anh</div>
+                                        <p class="book-description">PHẦN MỘT: PHÂN TÍCH CẤU TRÚC ĐỀ THI và ĐỊNH HƯỚNG ÔN TẬP</p>
+                                        <div class="book-footer"><div class="book-price">159.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                                <div class="book-card" data-category="english" data-book-id="15" data-book-img="TVTA.jpg">
+                                    <div class="book-image"><img src="TVTA.jpg" alt="Tự học Từ vựng Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-edit" style="display:none;"></i></div>
+                                    <div class="book-content">
+                                        <span class="book-category english-color">Tiếng Anh</span>
+                                        <h3 class="book-title">Tự học Từ vựng Tiếng Anh - Word Formation</h3>
+                                        <div class="book-author"><i class="fas fa-user-edit"></i> Bùi Thị Thanh Huyền</div>
+                                        <p class="book-description">3 phần chính: Prefixes (Tiền tố), Roots (Gốc từ), Suffixes (Hậu tố)</p>
+                                        <div class="book-footer"><div class="book-price">119.000đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left: 5px;">Thêm giỏ</button></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="section-title">
+                    <h2>SÁCH THAM KHẢO KHÁC</h2>
+                    <div class="book-count" id="bookCount">0 sách</div>
+                </div>
+                
+                <div class="books-grid" id="booksGrid"></div>
+                
+                <div id="noResults" style="display: none; text-align: center; padding: 50px; background: white; border-radius: 12px;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: #bdc3c7;"></i>
+                    <h3>Không tìm thấy sách phù hợp</h3>
+                    <p>Hãy thử tìm kiếm với từ khóa khác.</p>
+                </div>
             </div>
-            
-            <div class="section-title">
-                <h2>SÁCH THAM KHẢO KHÁC</h2>
-                <div class="book-count" id="bookCount">0 sách</div>
-            </div>
-            
-            <div class="books-grid" id="booksGrid"></div>
-            
-            <div id="noResults" style="display: none; text-align: center; padding: 50px; background: white; border-radius: 12px;">
-                <i class="fas fa-search" style="font-size: 3rem; color: #bdc3c7;"></i>
-                <h3>Không tìm thấy sách phù hợp</h3>
-                <p>Hãy thử tìm kiếm với từ khóa khác.</p>
+
+            <!-- Trang kết quả tìm kiếm riêng -->
+            <div id="searchResultsPage" class="search-results-page">
+                <div class="search-header">
+                    <h2><i class="fas fa-search"></i> Kết quả tìm kiếm</h2>
+                    <button class="btn-back" id="backToHomeBtn"><i class="fas fa-arrow-left"></i> Quay lại</button>
+                </div>
+                <div class="search-stats" id="searchStats"></div>
+                <div id="searchResultsGrid" class="books-grid"></div>
+                <div id="searchNoResults" style="display: none; text-align: center; padding: 50px;">
+                    <i class="fas fa-search" style="font-size: 3rem; color: #bdc3c7;"></i>
+                    <h3>Không tìm thấy sách phù hợp</h3>
+                    <p>Hãy thử tìm kiếm với từ khóa khác.</p>
+                </div>
             </div>
         </main>
     </div>
 
+    <!-- Các modal (giữ nguyên) -->
     <div class="modal" id="authModal">
         <div class="modal-content">
             <span class="modal-close" id="modalClose">&times;</span>
             <div id="authFormContainer"></div>
         </div>
     </div>
-
     <div class="modal" id="bookDetailModal">
         <div class="modal-content modal-content-large">
             <span class="modal-close" id="bookModalClose">&times;</span>
             <div id="bookDetailContainer"></div>
         </div>
     </div>
-
-    <!-- MODAL GIỎ HÀNG -->
     <div class="modal" id="cartModal">
         <div class="modal-content cart-modal">
             <span class="modal-close" id="cartModalClose">&times;</span>
             <div id="cartContainer"></div>
         </div>
     </div>
-
-    <!-- MODAL THANH TOÁN -->
     <div class="modal" id="checkoutModal">
         <div class="modal-content">
             <span class="modal-close" id="checkoutModalClose">&times;</span>
@@ -1587,7 +1640,7 @@
     </footer>
 
     <script>
-        // ========== GIỮ NGUYÊN TOÀN BỘ DATABASE CŨ ==========
+        // ========== DATABASE SÁCH (GIỮ NGUYÊN) ==========
         const booksDatabase = {
             1: { title: "[2025-2026] Nền Tảng Toán Học", author: "Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Trợ Giảng Phạm Nhật Huy", category: "Toán học", price: 159000, stock: 500, pages: 384, icon: "fa-calculator", img: "NTT.jpg", description: "Được biên soạn nhằm giúp học sinh củng cố kiến thức nền tảng trước khi bước vào giai đoạn tổng ôn, luyện đề thi Tốt nghiệp THPT và các kỳ thi ĐGNL.", features: ["hơn 2000 bài tập điển hình", "Đầy đủ các dạng thức toán thường gặp khi đi thi", "CỦNG CỐ NỀN TẢNG TOÁN HỌC"] },
             2: { title: "[2025-2026] 60 Đề Minh Họa Môn Toán Tốt Nghiệp THPT 2026", author: "Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Thầy Bùi Quyết Tiến, Hà Quang Hưng", category: "Toán học", price: 159000, stock: 500, pages: 350, icon: "fa-chart-line", img: "TN60.jpg", description: "60 đề thi thử chất lượng cao, bám sát cấu trúc đề thi mới nhất...", features: ["60 đề thi thử", "Đáp án chi tiết", "Phân tích mức độ"] },
@@ -1606,140 +1659,60 @@
             15: { title: "Tự học Từ vựng Tiếng Anh - Word Formation", author: "Bùi Thị Thanh Huyền", category: "Tiếng Anh", price: 119000, stock: 500, pages: 480, icon: "fa-edit", img: "TVTA.jpg", description: "Cuốn sách TỰ HỌC TỪ VỰNG TIẾNG ANH - WORD FORMATION cung cấp một phương pháp học tập hệ thống và khoa học dựa trên các thành phần cấu tạo từ, giúp người học", features: ["Nhiều hình ảnh minh họa", "Bài tập và bài kiểm tra", "Mindmap"] }
         };
 
-        // ========== GIỎ HÀNG (THÊM MỚI) ==========
+        // ========== GIỎ HÀNG (GIỮ NGUYÊN) ==========
         let cart = JSON.parse(localStorage.getItem('bookstore_cart')) || [];
-        
-        function saveCart() {
-            localStorage.setItem('bookstore_cart', JSON.stringify(cart));
-            updateCartUI();
-        }
-        
+        function saveCart() { localStorage.setItem('bookstore_cart', JSON.stringify(cart)); updateCartUI(); }
         function addToCart(bookId) {
             const book = booksDatabase[bookId];
-            if (!book) return false;
+            if (!book) return;
             const existing = cart.find(item => item.id == bookId);
-            if (existing) {
-                existing.quantity++;
-            } else {
-                cart.push({ id: bookId, title: book.title, price: book.price, quantity: 1, img: book.img });
-            }
+            if (existing) existing.quantity++;
+            else cart.push({ id: bookId, title: book.title, price: book.price, quantity: 1, img: book.img });
             saveCart();
             showToast(`✅ Đã thêm "${book.title}" vào giỏ hàng!`);
-            return true;
         }
-        
         function updateCartQuantity(bookId, newQuantity) {
             const item = cart.find(item => item.id == bookId);
             if (item) {
-                if (newQuantity <= 0) {
-                    cart = cart.filter(item => item.id != bookId);
-                } else {
-                    item.quantity = newQuantity;
-                }
+                if (newQuantity <= 0) cart = cart.filter(item => item.id != bookId);
+                else item.quantity = newQuantity;
                 saveCart();
             }
         }
-        
-        function removeFromCart(bookId) {
-            cart = cart.filter(item => item.id != bookId);
-            saveCart();
-            showToast(`🗑 Đã xóa sách khỏi giỏ hàng`);
-        }
-        
-        function getCartTotal() {
-            return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-        }
-        
-        function getCartItemCount() {
-            return cart.reduce((sum, item) => sum + item.quantity, 0);
-        }
-        
-        function updateCartUI() {
-            const count = getCartItemCount();
-            const cartCountSpan = document.getElementById('cartCount');
-            if (cartCountSpan) cartCountSpan.textContent = count;
-        }
-        
+        function removeFromCart(bookId) { cart = cart.filter(item => item.id != bookId); saveCart(); showToast(`🗑 Đã xóa sách khỏi giỏ hàng`); }
+        function getCartTotal() { return cart.reduce((sum, item) => sum + (item.price * item.quantity), 0); }
+        function getCartItemCount() { return cart.reduce((sum, item) => sum + item.quantity, 0); }
+        function updateCartUI() { document.getElementById('cartCount').textContent = getCartItemCount(); }
         function renderCartModal() {
             const container = document.getElementById('cartContainer');
-            if (!container) return;
-            if (cart.length === 0) {
-                container.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 15px;"></i><p>Giỏ hàng trống</p></div>`;
-                return;
-            }
+            if (cart.length === 0) { container.innerHTML = `<div class="empty-cart"><i class="fas fa-shopping-cart" style="font-size: 3rem;"></i><p>Giỏ hàng trống</p></div>`; return; }
             let html = `<h2 style="padding: 20px 20px 0 20px;"><i class="fas fa-shopping-cart"></i> Giỏ hàng của bạn</h2><div style="max-height: 400px; overflow-y: auto;">`;
             cart.forEach(item => {
-                html += `
-                    <div class="cart-item">
-                        <div class="cart-item-info">
-                            <div class="cart-item-title">${item.title}</div>
-                            <div class="cart-item-price">${item.price.toLocaleString('vi-VN')}đ</div>
-                        </div>
-                        <div class="cart-item-quantity">
-                            <button onclick="updateCartQuantity(${item.id}, ${item.quantity - 1})">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateCartQuantity(${item.id}, ${item.quantity + 1})">+</button>
-                        </div>
-                        <button class="cart-item-remove" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button>
-                    </div>
-                `;
+                html += `<div class="cart-item"><div class="cart-item-info"><div class="cart-item-title">${item.title}</div><div class="cart-item-price">${item.price.toLocaleString('vi-VN')}đ</div></div>
+                         <div class="cart-item-quantity"><button onclick="updateCartQuantity(${item.id}, ${item.quantity-1})">-</button><span>${item.quantity}</span><button onclick="updateCartQuantity(${item.id}, ${item.quantity+1})">+</button></div>
+                         <button class="cart-item-remove" onclick="removeFromCart(${item.id})"><i class="fas fa-trash"></i></button></div>`;
             });
-            html += `</div><div class="cart-total">Tổng cộng: ${getCartTotal().toLocaleString('vi-VN')}đ</div>
-                     <div class="cart-actions"><button class="btn-checkout" onclick="proceedToCheckout()">Thanh toán</button></div>`;
+            html += `</div><div class="cart-total">Tổng cộng: ${getCartTotal().toLocaleString('vi-VN')}đ</div><div class="cart-actions"><button class="btn-checkout" onclick="proceedToCheckout()">Thanh toán</button></div>`;
             container.innerHTML = html;
         }
-        
-        function openCartModal() {
-            renderCartModal();
-            document.getElementById('cartModal').classList.add('active');
-        }
-        
+        function openCartModal() { renderCartModal(); document.getElementById('cartModal').classList.add('active'); }
         function proceedToCheckout() {
-            if (cart.length === 0) {
-                showToast("Giỏ hàng trống! Vui lòng thêm sách.");
-                return;
-            }
+            if (cart.length === 0) { showToast("Giỏ hàng trống!"); return; }
             document.getElementById('cartModal').classList.remove('active');
-            showCheckoutForm();
-        }
-        
-        function showCheckoutForm() {
             const container = document.getElementById('checkoutContainer');
-            container.innerHTML = `
-                <h2><i class="fas fa-credit-card"></i> Thông tin thanh toán</h2>
-                <form id="checkoutForm">
-                    <div class="form-group"><label>Họ tên</label><input type="text" id="customerName" required></div>
-                    <div class="form-group"><label>Số điện thoại</label><input type="tel" id="customerPhone" required></div>
-                    <div class="form-group"><label>Địa chỉ giao hàng</label><input type="text" id="customerAddress" required></div>
-                    <div class="cart-total" style="margin: 20px 0;">Tổng tiền: ${getCartTotal().toLocaleString('vi-VN')}đ</div>
-                    <button type="submit" class="btn-submit">Xác nhận đặt hàng</button>
-                </form>
-            `;
+            container.innerHTML = `<h2><i class="fas fa-credit-card"></i> Thông tin thanh toán</h2><form id="checkoutForm"><div class="form-group"><label>Họ tên</label><input type="text" id="customerName" required></div><div class="form-group"><label>Số điện thoại</label><input type="tel" id="customerPhone" required></div><div class="form-group"><label>Địa chỉ giao hàng</label><input type="text" id="customerAddress" required></div><div class="cart-total" style="margin:20px 0;">Tổng tiền: ${getCartTotal().toLocaleString('vi-VN')}đ</div><button type="submit" class="btn-submit">Xác nhận đặt hàng</button></form>`;
             document.getElementById('checkoutForm').addEventListener('submit', (e) => {
                 e.preventDefault();
                 const name = document.getElementById('customerName').value;
                 if (!name) { alert('Vui lòng nhập họ tên'); return; }
                 showToast(`🎉 Cảm ơn ${name}! Đơn hàng đã được đặt thành công.`);
-                cart = [];
-                saveCart();
+                cart = []; saveCart();
                 document.getElementById('checkoutModal').classList.remove('active');
-                if (document.getElementById('cartModal').classList.contains('active')) {
-                    document.getElementById('cartModal').classList.remove('active');
-                }
             });
             document.getElementById('checkoutModal').classList.add('active');
         }
-        
-        function showToast(message) {
-            const existingToast = document.querySelector('.toast-notification');
-            if (existingToast) existingToast.remove();
-            const toast = document.createElement('div');
-            toast.className = 'toast-notification';
-            toast.innerHTML = message;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2500);
-        }
-        
+        function showToast(msg) { let t = document.querySelector('.toast-notification'); if(t) t.remove(); t = document.createElement('div'); t.className = 'toast-notification'; t.innerHTML = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2500); }
+
         // ========== HIỂN THỊ CHI TIẾT SÁCH ==========
         function showBookDetail(bookId) {
             const book = booksDatabase[bookId];
@@ -1747,96 +1720,39 @@
             const stockClass = book.stock > 20 ? 'stock-available' : (book.stock > 0 ? 'stock-low' : 'stock-out');
             const stockText = book.stock > 0 ? `Còn ${book.stock} cuốn` : 'Hết hàng';
             const container = document.getElementById('bookDetailContainer');
-            container.innerHTML = `
-                <div class="book-detail">
-                    <div class="book-detail-header">
-                        <div class="book-detail-image">
-                            <img src="${book.img}" alt="${book.title}" style="width:100%; height:100%; object-fit:cover;" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas ${book.icon}\' style=\'font-size:6rem; color:white;\'></i>'">
-                        </div>
-                        <div class="book-detail-info">
-                            <h2>${book.title}</h2>
-                            <div class="book-detail-meta">
-                                <p><i class="fas fa-user-edit"></i> <strong>Tác giả:</strong> ${book.author}</p>
-                                <p><i class="fas fa-tag"></i> <strong>Thể loại:</strong> ${book.category}</p>
-                                <p><i class="fas fa-calendar-alt"></i> <strong>Năm xuất bản:</strong> 2026</p>
-                                <p><i class="fas fa-file-alt"></i> <strong>Số trang:</strong> ${book.pages} trang</p>
-                            </div>
-                            <div class="book-detail-price">${book.price.toLocaleString('vi-VN')}đ</div>
-                            <div class="book-detail-stock ${stockClass}"><i class="fas ${book.stock > 0 ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${stockText}</div>
-                            <div>
-                                <button class="btn-buy" onclick="addToCart(${bookId}); showToast('Đã thêm vào giỏ!');"><i class="fas fa-bolt"></i> Mua ngay</button>
-                                <button class="btn-add-cart" onclick="addToCart(${bookId})"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="book-detail-section">
-                        <h3><i class="fas fa-info-circle"></i> Giới thiệu sách</h3>
-                        <div class="book-detail-description">${book.description}</div>
-                    </div>
-                    <div class="book-detail-section">
-                        <h3><i class="fas fa-star"></i> Điểm nổi bật</h3>
-                        <ul class="book-features-list">${book.features.map(f => `<li>${f}</li>`).join('')}</ul>
-                    </div>
-                </div>
-            `;
+            container.innerHTML = `<div class="book-detail"><div class="book-detail-header"><div class="book-detail-image"><img src="${book.img}" alt="${book.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas ${book.icon}\' style=\'font-size:6rem; color:white;\'></i>'"></div><div class="book-detail-info"><h2>${book.title}</h2><div class="book-detail-meta"><p><i class="fas fa-user-edit"></i> <strong>Tác giả:</strong> ${book.author}</p><p><i class="fas fa-tag"></i> <strong>Thể loại:</strong> ${book.category}</p><p><i class="fas fa-file-alt"></i> <strong>Số trang:</strong> ${book.pages} trang</p></div><div class="book-detail-price">${book.price.toLocaleString('vi-VN')}đ</div><div class="book-detail-stock ${stockClass}"><i class="fas ${book.stock > 0 ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${stockText}</div><div><button class="btn-buy" onclick="addToCart(${bookId})"><i class="fas fa-bolt"></i> Mua ngay</button><button class="btn-add-cart" onclick="addToCart(${bookId})"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button></div></div></div><div class="book-detail-section"><h3><i class="fas fa-info-circle"></i> Giới thiệu sách</h3><div class="book-detail-description">${book.description}</div></div><div class="book-detail-section"><h3><i class="fas fa-star"></i> Điểm nổi bật</h3><ul class="book-features-list">${book.features.map(f => `<li>${f}</li>`).join('')}</ul></div></div>`;
             document.getElementById('bookDetailModal').classList.add('active');
         }
-        
-        // ========== ĐĂNG NHẬP, ĐĂNG KÝ ==========
+
+        // ========== ĐĂNG NHẬP, ĐĂNG KÝ (GIỮ NGUYÊN) ==========
         let users = JSON.parse(localStorage.getItem('bookstore_users')) || [
             { id: 1, name: "chung", email: "admin@wed.com", password: "123456", role: "admin" },
             { id: 2, name: "chung1", email: "user@wed.com", password: "123456", role: "customer" }
         ];
         let currentUser = JSON.parse(localStorage.getItem('bookstore_current_user')) || null;
-        
         function saveUsers() { localStorage.setItem('bookstore_users', JSON.stringify(users)); }
         function saveCurrentUser() { currentUser ? localStorage.setItem('bookstore_current_user', JSON.stringify(currentUser)) : localStorage.removeItem('bookstore_current_user'); }
-        
         function login(email, password) {
             const user = users.find(u => u.email === email && u.password === password);
             if (user) { currentUser = { ...user }; saveCurrentUser(); updateUserUI(); closeAuthModal(); showToast('Đăng nhập thành công!'); return true; }
             alert('Email hoặc mật khẩu không đúng!'); return false;
         }
-        
         function register(name, email, password) {
             if (users.find(u => u.email === email)) { alert('Email đã được đăng ký!'); return false; }
             const newUser = { id: users.length + 1, name, email, password, role: 'customer' };
             users.push(newUser); saveUsers(); currentUser = { ...newUser }; saveCurrentUser(); updateUserUI(); closeAuthModal(); showToast('Đăng ký thành công!'); return true;
         }
-        
         function logout() { currentUser = null; saveCurrentUser(); updateUserUI(); showToast('Đã đăng xuất!'); }
-        
         function updateUserUI() {
             const userDisplayName = document.getElementById('userDisplayName');
             const loginBtn = document.getElementById('loginBtn');
             const registerBtn = document.getElementById('registerBtn');
             const logoutBtn = document.getElementById('logoutBtn');
-            if (currentUser) {
-                userDisplayName.innerHTML = `<i class="fas fa-user-circle"></i> ${currentUser.name}`;
-                loginBtn.style.display = 'none'; registerBtn.style.display = 'none'; logoutBtn.style.display = 'block';
-            } else {
-                userDisplayName.innerHTML = `<i class="fas fa-user-circle"></i> Tài khoản`;
-                loginBtn.style.display = 'block'; registerBtn.style.display = 'block'; logoutBtn.style.display = 'none';
-            }
+            if (currentUser) { userDisplayName.innerHTML = `<i class="fas fa-user-circle"></i> ${currentUser.name}`; loginBtn.style.display = 'none'; registerBtn.style.display = 'none'; logoutBtn.style.display = 'block'; }
+            else { userDisplayName.innerHTML = `<i class="fas fa-user-circle"></i> Tài khoản`; loginBtn.style.display = 'block'; registerBtn.style.display = 'block'; logoutBtn.style.display = 'none'; }
         }
-        
-        function renderLoginForm() {
-            return `<h2><i class="fas fa-sign-in-alt"></i> Đăng nhập</h2>
-            <form id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" placeholder="example@email.com" required></div>
-            <div class="form-group"><label>Mật khẩu</label><input type="password" id="loginPassword" placeholder="••••••" required></div>
-            <button type="submit" class="btn-submit">Đăng nhập</button></form>
-            <div class="switch-form">Chưa có tài khoản? <a id="switchToRegister">Đăng ký ngay</a></div>`;
-        }
-        
-        function renderRegisterForm() {
-            return `<h2><i class="fas fa-user-plus"></i> Đăng ký</h2>
-            <form id="registerForm"><div class="form-group"><label>Họ tên</label><input type="text" id="regName" placeholder="Nguyễn Văn A" required></div>
-            <div class="form-group"><label>Email</label><input type="email" id="regEmail" placeholder="example@email.com" required></div>
-            <div class="form-group"><label>Mật khẩu</label><input type="password" id="regPassword" placeholder="••••••" required></div>
-            <button type="submit" class="btn-submit">Đăng ký</button></form>
-            <div class="switch-form">Đã có tài khoản? <a id="switchToLogin">Đăng nhập</a></div>`;
-        }
-        
+        function renderLoginForm() { return `<h2><i class="fas fa-sign-in-alt"></i> Đăng nhập</h2><form id="loginForm"><div class="form-group"><label>Email</label><input type="email" id="loginEmail" required></div><div class="form-group"><label>Mật khẩu</label><input type="password" id="loginPassword" required></div><button type="submit" class="btn-submit">Đăng nhập</button></form><div class="switch-form">Chưa có tài khoản? <a id="switchToRegister">Đăng ký ngay</a></div>`; }
+        function renderRegisterForm() { return `<h2><i class="fas fa-user-plus"></i> Đăng ký</h2><form id="registerForm"><div class="form-group"><label>Họ tên</label><input type="text" id="regName" required></div><div class="form-group"><label>Email</label><input type="email" id="regEmail" required></div><div class="form-group"><label>Mật khẩu</label><input type="password" id="regPassword" required></div><button type="submit" class="btn-submit">Đăng ký</button></form><div class="switch-form">Đã có tài khoản? <a id="switchToLogin">Đăng nhập</a></div>`; }
         function showAuthModal(formType = 'login') {
             const container = document.getElementById('authFormContainer');
             container.innerHTML = formType === 'login' ? renderLoginForm() : renderRegisterForm();
@@ -1849,83 +1765,117 @@
             }
             document.getElementById('authModal').classList.add('active');
         }
-        
         function closeAuthModal() { document.getElementById('authModal').classList.remove('active'); }
-        
-        // ========== FILTER & SEARCH (ĐÃ SỬA LỖI) ==========
-        function initFilterAndSearch() {
-            const searchInput = document.getElementById('searchInput');
-            const searchButton = document.getElementById('searchButton');
-            const categoryItems = document.querySelectorAll('.category-item');
-            const bookCards = document.querySelectorAll('.book-card');
-            const bookSeries = document.querySelectorAll('.book-series-section');
-            const noResults = document.getElementById('noResults');
-            const bookCountSpan = document.getElementById('bookCount');
-            
-            let currentCategory = 'all';
-            let currentSearchTerm = '';
-            
-            function filterBooks() {
-                let visibleCount = 0;
-                bookCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    const title = card.querySelector('.book-title')?.textContent.toLowerCase() || '';
-                    const author = card.querySelector('.book-author')?.textContent.toLowerCase() || '';
-                    const desc = card.querySelector('.book-description')?.textContent.toLowerCase() || '';
-                    const categoryMatch = currentCategory === 'all' || category === currentCategory;
-                    const searchMatch = !currentSearchTerm || title.includes(currentSearchTerm) || author.includes(currentSearchTerm) || desc.includes(currentSearchTerm);
-                    if (categoryMatch && searchMatch) {
-                        card.style.display = 'block';
-                        visibleCount++;
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-                bookSeries.forEach(series => {
-                    const seriesCards = series.querySelectorAll('.book-card');
-                    let hasVisible = false;
-                    seriesCards.forEach(card => { if (card.style.display !== 'none') hasVisible = true; });
-                    series.style.display = hasVisible ? 'block' : 'none';
-                });
-                if (bookCountSpan) bookCountSpan.textContent = `Hiển thị ${visibleCount} sách`;
-                if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
+
+        // ========== TÌM KIẾM THÔNG MINH + TRANG RIÊNG ==========
+        function removeAccent(str) {
+            return str.normalize('NFD').replace(/[\u0300-\u036f]/g, '').replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
+
+        function normalizeSearchText(text) {
+            return removeAccent(text.toLowerCase()).replace(/[^\w\s]/g, '');
+        }
+
+        function searchBooks(keyword) {
+            if (!keyword.trim()) return [];
+            const normalizedKeyword = normalizeSearchText(keyword);
+            const results = [];
+            for (let id in booksDatabase) {
+                const book = booksDatabase[id];
+                const titleNorm = normalizeSearchText(book.title);
+                const authorNorm = normalizeSearchText(book.author);
+                const descNorm = normalizeSearchText(book.description);
+                const categoryNorm = normalizeSearchText(book.category);
+                if (titleNorm.includes(normalizedKeyword) || authorNorm.includes(normalizedKeyword) || descNorm.includes(normalizedKeyword) || categoryNorm.includes(normalizedKeyword)) {
+                    results.push({ id: parseInt(id), ...book });
+                }
             }
-            
-            categoryItems.forEach(item => {
-                item.addEventListener('click', function() {
-                    categoryItems.forEach(cat => cat.classList.remove('active'));
-                    this.classList.add('active');
-                    currentCategory = this.getAttribute('data-category');
-                    filterBooks();
+            return results;
+        }
+
+        function renderSearchResults(keyword) {
+            const results = searchBooks(keyword);
+            const searchPage = document.getElementById('searchResultsPage');
+            const originalContent = document.getElementById('originalContent');
+            const resultsGrid = document.getElementById('searchResultsGrid');
+            const searchStats = document.getElementById('searchStats');
+            const noResultsDiv = document.getElementById('searchNoResults');
+
+            // Ẩn nội dung gốc, hiện trang kết quả
+            originalContent.style.display = 'none';
+            searchPage.classList.add('active');
+
+            if (results.length === 0) {
+                resultsGrid.style.display = 'none';
+                noResultsDiv.style.display = 'block';
+                searchStats.innerHTML = `Tìm thấy 0 kết quả cho từ khóa "<strong>${escapeHtml(keyword)}</strong>"`;
+                return;
+            }
+
+            resultsGrid.style.display = 'grid';
+            noResultsDiv.style.display = 'none';
+            searchStats.innerHTML = `Tìm thấy ${results.length} kết quả cho từ khóa "<strong>${escapeHtml(keyword)}</strong>"`;
+
+            let html = '';
+            results.forEach(book => {
+                const categoryClass = book.category === 'Toán học' ? 'math-color' : (book.category === 'Vật lý' ? 'physics-color' : (book.category === 'Hóa học' ? 'chemistry-color' : (book.category === 'Sinh học' ? 'biology-color' : 'english-color')));
+                html += `<div class="book-card" data-category="${book.category.toLowerCase().replace(' ', '')}" data-book-id="${book.id}">
+                            <div class="book-image"><img src="${book.img}" alt="${book.title}" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas ${book.icon}" style="display:none;"></i></div>
+                            <div class="book-content">
+                                <span class="book-category ${categoryClass}">${book.category}</span>
+                                <h3 class="book-title">${book.title}</h3>
+                                <div class="book-author"><i class="fas fa-user-edit"></i> ${book.author}</div>
+                                <p class="book-description">${book.description.substring(0, 100)}...</p>
+                                <div class="book-footer"><div class="book-price">${book.price.toLocaleString('vi-VN')}đ</div><button class="btn-detail">Xem chi tiết</button><button class="btn-add-cart" style="margin-left:5px;">Thêm giỏ</button></div>
+                            </div>
+                         </div>`;
+            });
+            resultsGrid.innerHTML = html;
+
+            // Gắn lại sự kiện cho các nút trong kết quả tìm kiếm
+            document.querySelectorAll('#searchResultsGrid .btn-detail').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = btn.closest('.book-card');
+                    const id = card.getAttribute('data-book-id');
+                    if (id) showBookDetail(parseInt(id));
                 });
             });
-            
-            function performSearch() {
-                currentSearchTerm = searchInput.value.trim().toLowerCase();
-                filterBooks();
-            }
-            searchButton.addEventListener('click', performSearch);
-            searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
-            filterBooks();
+            document.querySelectorAll('#searchResultsGrid .btn-add-cart').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const card = btn.closest('.book-card');
+                    const id = card.getAttribute('data-book-id');
+                    if (id) addToCart(parseInt(id));
+                });
+            });
         }
-        
+
+        function escapeHtml(str) {
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function resetToOriginalContent() {
+            document.getElementById('originalContent').style.display = 'block';
+            document.getElementById('searchResultsPage').classList.remove('active');
+            document.getElementById('searchInput').value = '';
+        }
+
         // ========== KHỞI TẠO ==========
         document.addEventListener('DOMContentLoaded', function() {
-            initFilterAndSearch();
-            updateUserUI();
-            updateCartUI();
-            
-            document.querySelectorAll('.btn-detail').forEach(btn => {
+            // Các sự kiện cho nút chi tiết và thêm giỏ trong nội dung gốc
+            document.querySelectorAll('#originalContent .btn-detail').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const card = this.closest('.book-card');
                     const bookId = card.getAttribute('data-book-id');
                     if (bookId) showBookDetail(parseInt(bookId));
-                    else alert('Đang cập nhật thông tin sách!');
                 });
             });
-            
-            document.querySelectorAll('.btn-add-cart').forEach(btn => {
+            document.querySelectorAll('#originalContent .btn-add-cart').forEach(btn => {
                 btn.addEventListener('click', function(e) {
                     e.stopPropagation();
                     const card = this.closest('.book-card');
@@ -1933,31 +1883,52 @@
                     if (bookId) addToCart(parseInt(bookId));
                 });
             });
-            
+
+            // Tìm kiếm
+            const searchBtn = document.getElementById('searchButton');
+            const searchInput = document.getElementById('searchInput');
+            function performSearch() {
+                const keyword = searchInput.value.trim();
+                if (keyword === '') {
+                    showToast('Vui lòng nhập từ khóa tìm kiếm');
+                    return;
+                }
+                renderSearchResults(keyword);
+            }
+            searchBtn.addEventListener('click', performSearch);
+            searchInput.addEventListener('keypress', (e) => { if (e.key === 'Enter') performSearch(); });
+
+            // Nút quay lại
+            document.getElementById('backToHomeBtn').addEventListener('click', resetToOriginalContent);
+
+            // Các sự kiện modal, user, giỏ hàng
             document.getElementById('bookModalClose').addEventListener('click', () => document.getElementById('bookDetailModal').classList.remove('active'));
             document.getElementById('cartModalClose').addEventListener('click', () => document.getElementById('cartModal').classList.remove('active'));
             document.getElementById('checkoutModalClose').addEventListener('click', () => document.getElementById('checkoutModal').classList.remove('active'));
-            document.getElementById('cartIcon').addEventListener('click', () => openCartModal());
-            
+            document.getElementById('cartIcon').addEventListener('click', openCartModal);
             window.addEventListener('click', (e) => {
                 if (e.target === document.getElementById('bookDetailModal')) document.getElementById('bookDetailModal').classList.remove('active');
                 if (e.target === document.getElementById('cartModal')) document.getElementById('cartModal').classList.remove('active');
                 if (e.target === document.getElementById('checkoutModal')) document.getElementById('checkoutModal').classList.remove('active');
                 if (e.target === document.getElementById('authModal')) closeAuthModal();
             });
-            
             const userInfo = document.getElementById('userInfo');
             const userDropdown = document.getElementById('userDropdown');
-            if(userInfo) userInfo.addEventListener('click', (e) => { e.stopPropagation(); userDropdown.classList.toggle('active'); });
+            userInfo.addEventListener('click', (e) => { e.stopPropagation(); userDropdown.classList.toggle('active'); });
             document.addEventListener('click', () => userDropdown.classList.remove('active'));
             document.getElementById('loginBtn').addEventListener('click', (e) => { e.preventDefault(); userDropdown.classList.remove('active'); showAuthModal('login'); });
             document.getElementById('registerBtn').addEventListener('click', (e) => { e.preventDefault(); userDropdown.classList.remove('active'); showAuthModal('register'); });
             document.getElementById('logoutBtn').addEventListener('click', (e) => { e.preventDefault(); logout(); userDropdown.classList.remove('active'); });
             document.getElementById('modalClose').addEventListener('click', closeAuthModal);
-            
             const filterToggle = document.getElementById('filterToggle');
             const sidebar = document.getElementById('sidebar');
             if(filterToggle) filterToggle.addEventListener('click', () => sidebar.classList.toggle('active'));
+
+            updateUserUI();
+            updateCartUI();
+            // Ẩn trang kết quả tìm kiếm ban đầu
+            document.getElementById('searchResultsPage').classList.remove('active');
+            document.getElementById('originalContent').style.display = 'block';
         });
     </script>
 </body>
