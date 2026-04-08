@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bộ sách tham khảo ôn thi tốt nghiệp THPT và Đại Học</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<!--PHẦN CSS-->
     <style>
         * {
             margin: 0;
@@ -961,7 +962,7 @@
             to { transform: translateX(0); opacity: 1; }
         }
 
-        /* Trang kết quả tìm kiếm riêng */
+    <-->
         .search-results-page {
             display: none;
             background: white;
@@ -1001,7 +1002,9 @@
             font-size: 0.95rem;
         }
     </style>
+<!--KẾT THÚC PHẦN CSS-->
 </head>
+<!--KẾT THÚC PHẦN CẤU TRÚC,THIẾT KẾ,TRANG TRÍ TRANG-->
 <body>
     <header>
         <div class="header-content">
@@ -1010,11 +1013,13 @@
                 <h1>Bộ sách tham khảo ôn thi tốt nghiệp THPT và Đại Học</h1>
             </div>
             <div class="search-container">
+                 <!-- Thanh tìm kiếm-->
                 <div class="search-box">
                     <input type="text" id="searchInput" placeholder="Tìm kiếm sách theo tên, tác giả, thể loại...">
-                    <button id="searchButton"><i class="fas fa-search"></i> Tìm kiếm</button>
+                    <button id="searchButton"><i class="fas fa-search"></i> Tìm kiếm</button> <!-- KẾT THÚC Thanh tìm kiếm-->
                 </div>
             </div>
+<!--BẢNG TÀI KHOẢN-->
             <div class="user-info" id="userInfo">
                 <div class="cart-icon" id="cartIcon">
                     <i class="fas fa-shopping-cart"></i>
@@ -1031,11 +1036,12 @@
                     <a href="#" id="logoutBtn" class="logout-btn" style="display: none;"><i class="fas fa-sign-out-alt"></i> Đăng xuất</a>
                 </div>
             </div>
+<!--KẾT THÚC BẢNG TÀI KHOẢN-->
         </div>
     </header>
 
     <button class="filter-toggle" id="filterToggle"><i class="fas fa-filter"></i> Danh mục sách</button>
-
+<!--DANH MỤC CÁC MÔN HỌC-->
     <div class="container">
         <aside class="sidebar" id="sidebar">
             <h2><i class="fas fa-list"></i> DANH MỤC MÔN HỌC</h2>
@@ -1047,7 +1053,8 @@
                 <li class="category-item" data-category="biology"><i class="fas fa-dna biology-color"></i> Sinh học<span class="category-count" id="count-biology">3</span></li>
                 <li class="category-item" data-category="english"><i class="fas fa-language english-color"></i> Tiếng Anh<span class="category-count" id="count-english">3</span></li>
             </ul>
-            
+<!--KẾT THÚC PHẦN DANH MỤC CÁC MÔN HỌC-->
+<!--GIỚI THIỆU CÁC LOẠI SÁCH-->
             <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #eee;">
                 <h3><i class="fas fa-info-circle"></i> Bộ sách nổi bật</h3>
                 <ul style="list-style: none; margin-top: 10px;">
@@ -1147,7 +1154,7 @@
                             <h4><i class="fas fa-book math-color"></i> Các sách trong bộ Toán:</h4>
                             <div class="books-grid">
                                 <div class="book-card" data-category="math" data-book-id="1" data-book-img="NTT.jpg">
-                                    <div class="book-image"><img src="NTT.jpg" alt="Nền Tảng Toán Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-calculator" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="NTT.jpg" alt="Nền Tảng Toán Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-calculator" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category math-color">Toán học</span>
                                         <h3 class="book-title">[2025-2026] Nền Tảng Toán Học</h3>
@@ -1157,7 +1164,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="math" data-book-id="2" data-book-img="TN60.jpg">
-                                    <div class="book-image"><img src="TN60.jpg" alt="60 Đề Minh Họa Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-chart-line" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="TN60.jpg" alt="60 Đề Minh Họa Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-chart-line" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category math-color">Toán học</span>
                                         <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Toán Tốt Nghiệp THPT 2026</h3>
@@ -1167,7 +1174,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="math" data-book-id="3" data-book-img="CTON.jpg">
-                                    <div class="book-image"><img src="CTON.jpg" alt="Combo Tổng Ôn Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-puzzle-piece" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="CTON.jpg" alt="Combo Tổng Ôn Toán" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-puzzle-piece" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category math-color">Toán học</span>
                                         <h3 class="book-title">[2025-2026] Combo Tổng Ôn Toán Học 12 Tập 1, Tập 2</h3>
@@ -1240,7 +1247,7 @@
                             <h4><i class="fas fa-book physics-color"></i> Các sách trong bộ Vật Lý:</h4>
                             <div class="books-grid">
                                 <div class="book-card" data-category="physics" data-book-id="4" data-book-img="VL12.jpg">
-                                    <div class="book-image"><img src="VL12.jpg" alt="Combo Tổng Ôn Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-atom" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="VL12.jpg" alt="Combo Tổng Ôn Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-atom" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category physics-color">Vật lý</span>
                                         <h3 class="book-title">[2025-2026] Combo Tổng Ôn Vật Lí Tập 1, Tập 2</h3>
@@ -1250,7 +1257,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="physics" data-book-id="5" data-book-img="TTVL.jpg">
-                                    <div class="book-image"><img src="TTVL.jpg" alt="Trọng Tâm Lí Thuyết Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-charging-station" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="TTVL.jpg" alt="Trọng Tâm Lí Thuyết Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-charging-station" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category physics-color">Vật lý</span>
                                         <h3 class="book-title">[LỚP 12 SGK MỚI] Trọng Tâm Lí Thuyết TNPT Môn Vật Lí</h3>
@@ -1260,7 +1267,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="physics" data-book-id="6" data-book-img="60VL.jpg">
-                                    <div class="book-image"><img src="60VL.jpg" alt="60 Đề Minh Họa Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="60VL.jpg" alt="60 Đề Minh Họa Vật Lí" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category physics-color">Vật lý</span>
                                         <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Vật Lí TNPT 2026</h3>
@@ -1327,7 +1334,7 @@
                             <h4><i class="fas fa-book chemistry-color"></i> Các sách trong bộ Hóa Học:</h4>
                             <div class="books-grid">
                                 <div class="book-card" data-category="chemistry" data-book-id="7" data-book-img="H1.jpg">
-                                    <div class="book-image"><img src="H1.jpg" alt="Tổng Ôn Hóa Học Tập 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-flask" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="H1.jpg" alt="Tổng Ôn Hóa Học Tập 1" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-flask" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category chemistry-color">Hóa học</span>
                                         <h3 class="book-title">[2025-2026] Tổng Ôn Hóa Học Tập 1</h3>
@@ -1337,7 +1344,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="chemistry" data-book-id="8" data-book-img="H2.jpg">
-                                    <div class="book-image"><img src="H2.jpg" alt="Tổng Ôn Hóa Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="H2.jpg" alt="Tổng Ôn Hóa Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category chemistry-color">Hóa học</span>
                                         <h3 class="book-title">[2025-2026] Tổng Ôn Hóa Học Tập 2</h3>
@@ -1347,7 +1354,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="chemistry" data-book-id="9" data-book-img="HH60.jpg">
-                                    <div class="book-image"><img src="HH60.jpg" alt="60 Đề Minh Họa Hóa Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-vial" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="HH60.jpg" alt="60 Đề Minh Họa Hóa Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-vial" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category chemistry-color">Hóa học</span>
                                         <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Hóa Học TNPT 2026</h3>
@@ -1426,7 +1433,7 @@
                             <h4><i class="fas fa-book biology-color"></i> Các sách trong bộ Sinh Học:</h4>
                             <div class="books-grid">
                                 <div class="book-card" data-category="biology" data-book-id="10" data-book-img="TOSH.jpg">
-                                    <div class="book-image"><img src="TOSH.jpg" alt="Tổng Ôn Sinh Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="TOSH.jpg" alt="Tổng Ôn Sinh Học Tập 2" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-dna" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category biology-color">Sinh học</span>
                                         <h3 class="book-title">[2025-2026] Tổng Ôn Sinh Học Tập 2</h3>
@@ -1436,7 +1443,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="biology" data-book-id="11" data-book-img="CĐSH.jpg">
-                                    <div class="book-image"><img src="CĐSH.jpg" alt="Bồi Dưỡng Chuyên Di Truyền Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-leaf" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="CĐSH.jpg" alt="Bồi Dưỡng Chuyên Di Truyền Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-leaf" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category biology-color">Sinh học</span>
                                         <h3 class="book-title">[2025-2026] Bồi Dưỡng Chuyên Di Truyền Học</h3>
@@ -1446,7 +1453,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="biology" data-book-id="12" data-book-img="SH60.jpg">
-                                    <div class="book-image"><img src="SH60.jpg" alt="60 Đề Minh Họa Sinh Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="SH60.jpg" alt="60 Đề Minh Họa Sinh Học" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-microscope" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category biology-color">Sinh học</span>
                                         <h3 class="book-title">[2025-2026] 60 đề minh họa Tốt nghiệp THPT 2026 môn Sinh học</h3>
@@ -1525,7 +1532,7 @@
                             <h4><i class="fas fa-book english-color"></i> Các sách trong bộ Tiếng Anh:</h4>
                             <div class="books-grid">
                                 <div class="book-card" data-category="english" data-book-id="13" data-book-img="TA12.jpg">
-                                    <div class="book-image"><img src="TA12.jpg" alt="Combo Tổng Ôn Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-language" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="TA12.jpg" alt="Combo Tổng Ôn Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-language" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category english-color">Tiếng Anh</span>
                                         <h3 class="book-title">[2025-2026] Combo Tổng Ôn Tiếng Anh Tập 1-2</h3>
@@ -1535,7 +1542,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="english" data-book-id="14" data-book-img="60TA.jpg">
-                                    <div class="book-image"><img src="60TA.jpg" alt="60 Đề Minh Họa Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-book-open" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="60TA.jpg" alt="60 Đề Minh Họa Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-book-open" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category english-color">Tiếng Anh</span>
                                         <h3 class="book-title">[2025-2026] 60 Đề Minh Họa Môn Tiếng Anh TNPT 2026</h3>
@@ -1545,7 +1552,7 @@
                                     </div>
                                 </div>
                                 <div class="book-card" data-category="english" data-book-id="15" data-book-img="TVTA.jpg">
-                                    <div class="book-image"><img src="TVTA.jpg" alt="Tự học Từ vựng Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-edit" style="display:none;"></i></div>
+                                    <div class="book-image"><img src="TVTA.jpg" alt="Tự học Từ vựng Tiếng Anh" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"><i class="fas fa-edit" style="display:none;"></i></div><!--phần chèn ảnh-->
                                     <div class="book-content">
                                         <span class="book-category english-color">Tiếng Anh</span>
                                         <h3 class="book-title">Tự học Từ vựng Tiếng Anh - Word Formation</h3>
@@ -1633,7 +1640,7 @@
         </div>
         <div class="copyright">&copy; 2026 - Bộ sách tham khảo ôn thi tốt nghiệp THPT và Đại Học</div>
     </footer>
-
+<!--PHÂN CHI TIẾT CÁC LOẠI SACH-->
     <script>
         const booksDatabase = {
             1: { title: "[2025-2026] Nền Tảng Toán Học", author: "Thầy Lê Văn Tuấn, Thầy Nguyễn Thế Duy, Trợ Giảng Phạm Nhật Huy", category: "Toán học", price: 159000, stock: 500, pages: 384, icon: "fa-calculator", img: "NTT.jpg", description: "Được biên soạn nhằm giúp học sinh củng cố kiến thức nền tảng trước khi bước vào giai đoạn tổng ôn, luyện đề thi Tốt nghiệp THPT và các kỳ thi ĐGNL.", features: ["hơn 2000 bài tập điển hình", "Đầy đủ các dạng thức toán thường gặp khi đi thi", "CỦNG CỐ NỀN TẢNG TOÁN HỌC"] },
@@ -1651,7 +1658,9 @@
             13: { title: "[2025-2026] Combo Tổng Ôn Tiếng Anh Tập 1-2", author: "Thầy Đinh Hải Bình", category: "Tiếng Anh", price: 205000, stock: 500, pages: 928, icon: "fa-language", img: "TA12.jpg", description: "Là một lộ trình luyện thi theo chuyên đề, giúp học sinh chuẩn bị tốt nhất cho Kỳ thi Tốt nghiệp THPT năm 2026.", features: ["Hệ thống kiến thức chi tiết", "Bài tập vận dụng đa dạng", "chứa mã ID để tra cứu video bài giảng, đáp án chi tiết, flashcard học từ vựng"] },
             14: { title: "[2025-2026] 60 Đề Minh Họa Môn Tiếng Anh TNPT 2026", author: "Cô Trang Anh", category: "Tiếng Anh", price: 159000, stock: 500, pages: 450, icon: "fa-book-open", img: "60TA.jpg", description: "BỘ ĐỀ TỦ SÂU", features: ["Phân tích chi tiết ma trận kiến thức, cấu trúc đề thi chính thức và đề tham khảo kỳ thi Tốt nghiệp THPT 2025 của Bộ GD&ĐT.", "Hướng dẫn cách làm từng dạng câu hỏi cụ thể, giúp học sinh nắm được cách xử lý thông tin và phương pháp suy luận với từng dạng bài.", "Tặng TÀI LIỆU PDF phân tích cấu trúc đề thi trong khóa học đi kèm."] },
             15: { title: "Tự học Từ vựng Tiếng Anh - Word Formation", author: "Bùi Thị Thanh Huyền", category: "Tiếng Anh", price: 119000, stock: 500, pages: 480, icon: "fa-edit", img: "TVTA.jpg", description: "Cuốn sách TỰ HỌC TỪ VỰNG TIẾNG ANH - WORD FORMATION cung cấp một phương pháp học tập hệ thống và khoa học dựa trên các thành phần cấu tạo từ, giúp người học", features: ["Nhiều hình ảnh minh họa", "Bài tập và bài kiểm tra", "Mindmap"] }
+            
         };
+        <!--phần giỏ hàng gồm: các sp đặt, thanh toán,hủy đơn,tình trạng sách.... -->
         let cart = JSON.parse(localStorage.getItem('bookstore_cart')) || [];
         function saveCart() { localStorage.setItem('bookstore_cart', JSON.stringify(cart)); updateCartUI(); }
         function addToCart(bookId) {
@@ -1702,7 +1711,7 @@
                 document.getElementById('checkoutModal').classList.remove('active');
             });
             document.getElementById('checkoutModal').classList.add('active');
-        }
+        } 
         function showToast(msg) { let t = document.querySelector('.toast-notification'); if(t) t.remove(); t = document.createElement('div'); t.className = 'toast-notification'; t.innerHTML = msg; document.body.appendChild(t); setTimeout(() => t.remove(), 2500); }
         
         function showBookDetail(bookId) {
@@ -1713,6 +1722,8 @@
             const container = document.getElementById('bookDetailContainer');
             container.innerHTML = `<div class="book-detail"><div class="book-detail-header"><div class="book-detail-image"><img src="${book.img}" alt="${book.title}" onerror="this.style.display='none'; this.parentElement.innerHTML='<i class=\'fas ${book.icon}\' style=\'font-size:6rem; color:white;\'></i>'"></div><div class="book-detail-info"><h2>${book.title}</h2><div class="book-detail-meta"><p><i class="fas fa-user-edit"></i> <strong>Tác giả:</strong> ${book.author}</p><p><i class="fas fa-tag"></i> <strong>Thể loại:</strong> ${book.category}</p><p><i class="fas fa-file-alt"></i> <strong>Số trang:</strong> ${book.pages} trang</p></div><div class="book-detail-price">${book.price.toLocaleString('vi-VN')}đ</div><div class="book-detail-stock ${stockClass}"><i class="fas ${book.stock > 0 ? 'fa-check-circle' : 'fa-times-circle'}"></i> ${stockText}</div><div><button class="btn-buy" onclick="addToCart(${bookId})"><i class="fas fa-bolt"></i> Mua ngay</button><button class="btn-add-cart" onclick="addToCart(${bookId})"><i class="fas fa-shopping-cart"></i> Thêm vào giỏ</button></div></div></div><div class="book-detail-section"><h3><i class="fas fa-info-circle"></i> Giới thiệu sách</h3><div class="book-detail-description">${book.description}</div></div><div class="book-detail-section"><h3><i class="fas fa-star"></i> Điểm nổi bật</h3><ul class="book-features-list">${book.features.map(f => `<li>${f}</li>`).join('')}</ul></div></div>`;
             document.getElementById('bookDetailModal').classList.add('active');
+            <!--kết thúc phần giỏ hàng-->
+            <!--CSDL người dùng-->
         }
         let users = JSON.parse(localStorage.getItem('bookstore_users')) || [
             { id: 1, name: "chung", email: "admin@wed.com", password: "123456", role: "admin" },
@@ -1800,7 +1811,8 @@
             resultsGrid.style.display = 'grid';
             noResultsDiv.style.display = 'none';
             searchStats.innerHTML = `Tìm thấy ${results.length} kết quả cho từ khóa "<strong>${escapeHtml(keyword)}</strong>"`;
-
+            <!--kết thúc phần CSDL-->
+            <!-- THUAẠT TOÁN CSS CHO THANH TÌM KIẾM SẢN PHẨM-->
             let html = '';
             results.forEach(book => {
                 const categoryClass = book.category === 'Toán học' ? 'math-color' : (book.category === 'Vật lý' ? 'physics-color' : (book.category === 'Hóa học' ? 'chemistry-color' : (book.category === 'Sinh học' ? 'biology-color' : 'english-color')));
@@ -1903,6 +1915,8 @@
             document.getElementById('searchResultsPage').classList.remove('active');
             document.getElementById('originalContent').style.display = 'block';
         });
+    <!--KẾT THÚC PHẦN TÌM KIẾM-->
     </script>
 </body>
+<!--RỒI HẾT CHỨC NĂNG R NHÁ-->
 </html>
